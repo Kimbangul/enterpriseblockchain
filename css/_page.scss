@@ -10,6 +10,7 @@
   position: relative;
   &__inner {
     padding: $size__section-inner;
+    height: 100%;
   }
 }
 // //섹션
@@ -19,6 +20,9 @@
   width: 100%;
   position: fixed;
   z-index: 99;
+  top: -13.8rem;
+  left: 0;
+  transition: top 0.3s;
   &__inner {
     @include util__flex(space-between, stretch);
     height: 13.8rem;
@@ -52,12 +56,31 @@
       }
     }
   }
+  &[data-show='true'] {
+    top: 0;
+  }
 }
 // // 헤더
 
 // 인트로
 .intro {
   min-height: 100vh;
+  &__desc {
+    font-size: 5.2rem;
+    color: $color__white;
+    font-weight: 700;
+    line-height: 1.35;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  &__arrow-down {
+    position: absolute;
+    left: 50%;
+    bottom: 4rem;
+    transform: translateX(-50%);
+  }
   &__video {
     &-container {
       overflow: hidden;
@@ -71,12 +94,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  &__arrow-down {
-    position: absolute;
-    left: 50%;
-    bottom: 4rem;
-    transform: translateX(-50%);
   }
 }
 // // 인트로
