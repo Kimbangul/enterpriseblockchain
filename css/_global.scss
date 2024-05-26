@@ -1,0 +1,54 @@
+html {
+  font-size: 62.5%;
+  width: 100%;
+  overflow-x: hidden;
+}
+html,
+body {
+  scroll-behavior: smooth !important;
+}
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  color: inherit;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+a,
+img {
+  display: block;
+}
+button {
+  outline: none;
+  appearance: none;
+  border: none;
+}
+body {
+  font-size: 1.4rem;
+  min-width: 280px;
+  overflow-x: hidden;
+  word-break: keep-all;
+  font-family: $font__archivo;
+}
+input,
+textarea {
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font__archivo;
+  // line-height: $size__title-line-height;
+}
+button {
+  font-family: $font__archivo;
+  background: transparent;
+}

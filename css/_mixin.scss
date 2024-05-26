@@ -1,0 +1,7 @@
+@mixin util__flex($jc: flex-start, $ai: stretch, $gap: 0, $dir: row) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  gap: $gap;
+  flex-direction: $dir;
+}

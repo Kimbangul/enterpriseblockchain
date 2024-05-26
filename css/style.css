@@ -1,0 +1,153 @@
+html {
+  font-size: 62.5%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  scroll-behavior: smooth !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  color: inherit;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+a,
+img {
+  display: block;
+}
+
+button {
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+}
+
+body {
+  font-size: 1.4rem;
+  min-width: 280px;
+  overflow-x: hidden;
+  word-break: keep-all;
+  font-family: "Archivo", "Noto Sans KR", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Archivo", "Noto Sans KR", sans-serif;
+}
+
+button {
+  font-family: "Archivo", "Noto Sans KR", sans-serif;
+  background: transparent;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-direction: row;
+  width: 10rem;
+  height: 100%;
+  filter: invert(1);
+}
+
+.sc {
+  position: relative;
+}
+.sc__inner {
+  padding: 0 7.2rem;
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+}
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 0;
+  flex-direction: row;
+  height: 13.8rem;
+  padding: 0 7.2rem;
+}
+.header__menu-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+  flex-direction: row;
+  height: 100%;
+  margin-right: -2.5rem;
+}
+.header__menu-item {
+  font-weight: 600;
+  color: #fff;
+  font-size: 1.8rem;
+}
+.header__menu-link, .header__menu-lang {
+  padding: 2.5rem;
+}
+.header__menu-lang {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  gap: 0.5rem;
+  flex-direction: row;
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: inherit;
+}
+.header__menu-lang-icon {
+  margin-bottom: 0.4rem;
+}
+.header__menu-lang-text {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  gap: 0;
+  flex-direction: row;
+}
+
+.intro {
+  min-height: 100vh;
+}
+.intro__video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.intro__video-container {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.intro__arrow-down {
+  position: absolute;
+  left: 50%;
+  bottom: 4rem;
+  transform: translateX(-50%);
+}/*# sourceMappingURL=style.css.map */
