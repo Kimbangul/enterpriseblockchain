@@ -258,10 +258,10 @@ body.--invert .data-id__title {
   height: 100vh;
 }
 
-.service-target--invert {
+.text-section--invert {
   color: #fff;
 }
-.service-target__inner {
+.text-section__inner {
   display: flex;
   justify-content: stretch;
   align-items: center;
@@ -271,14 +271,14 @@ body.--invert .data-id__title {
   padding-bottom: 8rem;
   min-height: 100vh;
 }
-.service-target__text-container {
+.text-section__text-container {
   width: 100%;
 }
-.service-target__head {
+.text-section__head {
   font-size: 7.2rem;
   font-weight: 700;
 }
-.service-target__desc {
+.text-section__desc {
   display: flex;
   justify-content: flex-end;
   align-items: stretch;
@@ -289,7 +289,7 @@ body.--invert .data-id__title {
   line-height: 1.6;
   margin-left: auto;
 }
-.service-target__scroller {
+.text-section__scroller {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -300,13 +300,13 @@ body.--invert .data-id__title {
   background: url("/assets/images/section_03_01.jpg");
   background-size: cover;
 }
-.service-target__scroller-text {
+.text-section__scroller-text {
   font-size: 7.2rem;
   font-weight: 700;
   text-align: center;
   color: #fff;
 }
-.service-target__scroller-item {
+.text-section__scroller-item {
   position: absolute;
   top: 0;
   left: 0;
@@ -315,7 +315,7 @@ body.--invert .data-id__title {
   height: 25%;
   background: #fff;
 }
-.service-target__scroller-item:last-child {
+.text-section__scroller-item:last-child {
   top: unset;
   bottom: 0;
   left: unset;
@@ -427,6 +427,7 @@ body.--invert .data-id__title {
 }
 .data-id__icon-desc {
   font-size: 2.4rem;
+  margin-top: 2.4rem;
   padding: 0 2.4rem;
   line-height: 1.6;
   font-weight: 700;

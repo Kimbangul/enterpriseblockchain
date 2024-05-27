@@ -12,7 +12,7 @@ const animation = {
 
     // invert
     ScrollTrigger.create({
-      trigger: '.service-target__inner',
+      trigger: '.text-section__inner',
       endTrigger: '.data-id',
       start: 'top top',
       end: 'top top',
@@ -119,21 +119,21 @@ const animation = {
     );
   },
   setService: () => {
-    const splitLine = new SplitType('.service-target__scroller-text', {
+    const splitLine = new SplitType('.text-section__scroller-text', {
       types: 'lines',
     });
-    const bgItem = gsap.utils.toArray('.service-target__scroller-item');
+    const bgItem = gsap.utils.toArray('.text-section__scroller-item');
     console.log(bgItem);
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '.service-target__scroller',
+        trigger: '.text-section__scroller',
         scrub: true,
         end: 'bottom bottom',
       },
     });
     const tl2 = gsap.timeline({
       scrollTrigger: {
-        trigger: '.service-target__scroller',
+        trigger: '.text-section__scroller',
         scrub: true,
         start: 'top center',
         end: 'bottom top',

@@ -166,7 +166,7 @@ body.--invert {
   }
 }
 // // 섹션2
-.service-target {
+.text-section {
   &--invert {
     color: $color__white;
   }
@@ -305,7 +305,7 @@ body.--invert {
     }
     &-desc {
       font-size: 2.4rem;
-      // margin-top: 2.4rem;
+      margin-top: 2.4rem;
       padding: 0 2.4rem;
       line-height: $size__p-line-height;
       font-weight: 700;
