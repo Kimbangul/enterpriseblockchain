@@ -73,11 +73,11 @@ button {
   position: relative;
 }
 .sc__inner {
-  padding: 0 7.2rem;
+  padding: 0 10rem;
   height: 100%;
 }
 
-.header {
+.header, .header--show {
   width: 100%;
   position: fixed;
   z-index: 99;
@@ -92,7 +92,7 @@ button {
   gap: 0;
   flex-direction: row;
   height: 13.8rem;
-  padding: 0 7.2rem;
+  padding: 0 10rem;
 }
 .header__menu-list {
   display: flex;
@@ -131,7 +131,7 @@ button {
   gap: 0;
   flex-direction: row;
 }
-.header[data-show=true] {
+.header--show {
   top: 0;
 }
 
@@ -139,6 +139,7 @@ button {
   min-height: 100vh;
 }
 .intro__desc {
+  opacity: 0;
   font-size: 5.2rem;
   color: #fff;
   font-weight: 700;
@@ -147,6 +148,10 @@ button {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+}
+.intro__desc:last-child {
+  font-size: 2.4rem;
+  line-height: 1.6;
 }
 .intro__arrow-down {
   position: absolute;
