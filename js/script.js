@@ -9,6 +9,17 @@ const animation = {
       start: window.innerHeight / 2,
       toggleClass: { targets: '.header', className: 'header--show' },
     });
+
+    // invert
+    ScrollTrigger.create({
+      trigger: '.service-target__inner',
+      //  start: window.innerHeight / 2,
+      endTrigger: '.data-id',
+      start: 'top top',
+      end: 'top top',
+      toggleClass: { targets: '.header', className: 'header--invert' },
+      markers: true,
+    });
   },
   setIntro: () => {
     const introDesc = gsap.utils.toArray('.intro__desc');
@@ -49,11 +60,6 @@ const animation = {
         pin: true,
         scrub: true,
         end: `+=${window.innerHeight * 5}`,
-      },
-    });
-    const tl2 = gsap.timeline({
-      scrollTrigger: {
-        // scr,
       },
     });
 
@@ -114,12 +120,66 @@ const animation = {
       'out'
     );
   },
+  setService: () => {
+    const splitLine = new SplitType('.service-target__scroller-text', {
+      types: 'lines',
+    });
+    const bgItem = gsap.utils.toArray('.service-target__scroller-item');
+    console.log(bgItem);
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.service-target__scroller',
+        scrub: true,
+        end: 'bottom bottom',
+      },
+    });
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.service-target__scroller',
+        scrub: true,
+        start: 'top center',
+        end: 'bottom top',
+      },
+    });
+
+    tl.to(
+      splitLine.lines[0],
+      {
+        xPercent: -70,
+      },
+      'text'
+    ).to(
+      splitLine.lines[2],
+      {
+        xPercent: 70,
+      },
+      'text'
+    );
+
+    tl2
+      .to(
+        bgItem[0],
+        {
+          width: '100%',
+        },
+        'text'
+      )
+      .addLabel('start====')
+      .to(
+        bgItem[1],
+        {
+          width: '100%',
+        },
+        'text'
+      );
+  },
 };
 
 // FUNCTION gsap 애니메이션 등록
 const registAnimation = () => {
   animation.setIntro();
   animation.setMission();
+  animation.setService();
   animation.setHeaderPosition();
 };
 

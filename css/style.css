@@ -113,7 +113,7 @@ button {
   z-index: 99;
   top: -13.8rem;
   left: 0;
-  transition: top 0.3s;
+  transition: top 0.3s, filter 0.3s;
 }
 .header__inner {
   display: flex;
@@ -160,6 +160,9 @@ button {
   align-items: center;
   gap: 0;
   flex-direction: row;
+}
+.header--invert {
+  filter: invert(1);
 }
 .header--show {
   top: 0;
@@ -281,6 +284,7 @@ button {
   align-items: center;
   gap: 0;
   flex-direction: row;
+  position: relative;
   height: 72rem;
   background: url("/assets/images/section_03_01.jpg");
   background-size: cover;
@@ -290,6 +294,21 @@ button {
   font-weight: 700;
   text-align: center;
   color: #fff;
+}
+.service-target__scroller-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  max-width: 22%;
+  height: 25%;
+  background: #fff;
+}
+.service-target__scroller-item:last-child {
+  top: unset;
+  bottom: 0;
+  left: unset;
+  right: 0;
 }
 
 .talent__inner {

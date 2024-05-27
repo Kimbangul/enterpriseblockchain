@@ -43,7 +43,7 @@
   z-index: 99;
   top: -13.8rem;
   left: 0;
-  transition: top 0.3s;
+  transition: top 0.3s, filter 0.3s;
   &__inner {
     @include util__flex(space-between, stretch);
     @include util__inner;
@@ -76,6 +76,9 @@
         @include util__flex(stretch, center);
       }
     }
+  }
+  &--invert {
+    filter: invert(1);
   }
   &--show {
     @extend .header;
@@ -180,6 +183,7 @@
   }
   &__scroller {
     @include util__flex(center, center);
+    position: relative;
     height: 72rem;
     background: url('/assets/images/section_03_01.jpg');
     background-size: cover;
@@ -187,6 +191,21 @@
       @include util__head-title;
       text-align: center;
       color: $color__white;
+    }
+    &-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      max-width: 22%;
+      height: 25%;
+      background: $color__white;
+      &:last-child {
+        top: unset;
+        bottom: 0;
+        left: unset;
+        right: 0;
+      }
     }
   }
 }
