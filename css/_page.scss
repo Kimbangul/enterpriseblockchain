@@ -215,7 +215,8 @@
   &__inner {
     display: grid;
     grid-template-columns: 3fr 5fr;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
   }
   &__head {
     @include util__flex(stretch, center);
@@ -240,6 +241,14 @@
       font-size: 1.6rem;
       font-weight: 700;
       margin-top: 1.2rem;
+    }
+    &-scroller {
+      position: absolute;
+      transform: translateY(100%);
+      &-container {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }

@@ -13,7 +13,6 @@ const animation = {
     // invert
     ScrollTrigger.create({
       trigger: '.service-target__inner',
-      //  start: window.innerHeight / 2,
       endTrigger: '.data-id',
       start: 'top top',
       end: 'top top',
@@ -173,6 +172,22 @@ const animation = {
         'text'
       );
   },
+  setTalent: () => {
+    const scroller = document.querySelector('.talent__img-scroller');
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.talent__inner',
+        pin: true,
+        yoyo: true,
+        scrub: true,
+        end: `+=${scroller.offsetHeight}`,
+      },
+    });
+
+    tl.to('.talent__img-scroller', {
+      yPercent: -200,
+    });
+  },
 };
 
 // FUNCTION gsap 애니메이션 등록
@@ -180,6 +195,7 @@ const registAnimation = () => {
   animation.setIntro();
   animation.setMission();
   animation.setService();
+  animation.setTalent();
   animation.setHeaderPosition();
 };
 
