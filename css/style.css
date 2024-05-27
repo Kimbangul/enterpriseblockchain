@@ -86,7 +86,7 @@ button {
   padding: 0 10rem;
   height: 100%;
 }
-.sc__bg-container {
+.sc__bg {
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -96,11 +96,14 @@ button {
   z-index: -1;
   display: inline-block;
 }
-.sc__bg-container img {
+.sc__bg img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.sc__bg-container {
+  position: relative;
 }
 
 .header, .header--show {
@@ -165,15 +168,16 @@ button {
   min-height: 100vh;
 }
 .intro__desc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  white-space: nowrap;
   opacity: 0;
   font-size: 5.2rem;
   color: #fff;
   font-weight: 700;
   line-height: 1.35;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
 }
 .intro__desc:last-child {
   font-size: 2.4rem;
@@ -204,15 +208,42 @@ button {
 .mission {
   min-height: 100vh;
 }
+.mission__dimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+}
 .mission__desc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  white-space: nowrap;
   font-size: 10rem;
   color: #fff;
   font-weight: 600;
   line-height: 1.2;
+  z-index: 1;
 }
-.mission__desc:nth-child(2) {
+.mission__desc:nth-of-type(2) {
   font-size: 2.4rem;
   line-height: 1.6;
+}
+.mission__bg {
+  top: 0;
+  bottom: 0;
+  height: auto;
+  overflow: hidden;
+}
+.mission__bg[data-bg="1"] {
+  bottom: 0;
+}
+.mission__bg img {
+  width: 100vw;
+  height: 100vh;
 }
 
 .footer {
@@ -221,6 +252,7 @@ button {
   color: #fff;
   font-size: 1.4rem;
   line-height: 1;
+  word-spacing: 0.06em;
 }
 .footer__inner {
   padding: 0 10rem;

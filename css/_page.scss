@@ -21,13 +21,16 @@
     @include util__inner;
     height: 100%;
   }
-  &__bg-container {
+  &__bg {
     @include util__bg;
     display: inline-block;
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+    &-container {
+      position: relative;
     }
   }
 }
@@ -85,15 +88,12 @@
 .intro {
   min-height: 100vh;
   &__desc {
+    @include util__center-text;
     opacity: 0;
     font-size: 5.2rem;
     color: $color__white;
     font-weight: 700;
     line-height: 1.35;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
 
     &:last-child {
       font-size: 2.4rem;
@@ -118,15 +118,38 @@
 // // 인트로
 .mission {
   min-height: 100vh;
-
+  &__dimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+  }
   &__desc {
+    @include util__center-text;
     font-size: 10rem;
     color: $color__white;
     font-weight: 600;
     line-height: 1.2;
-    &:nth-child(2) {
+    z-index: 1;
+    &:nth-of-type(2) {
       font-size: 2.4rem;
       line-height: 1.6;
+    }
+  }
+  &__bg {
+    top: 0;
+    bottom: 0;
+    //bottom: 100vh;
+    height: auto;
+    overflow: hidden;
+    &[data-bg='1'] {
+      bottom: 0;
+    }
+    img {
+      width: 100vw;
+      height: 100vh;
     }
   }
 }
@@ -138,6 +161,7 @@
   color: $color__white;
   font-size: 1.4rem;
   line-height: 1;
+  word-spacing: 0.06em;
   &__inner {
     @include util__inner;
     @include util__flex(space-between, center);
