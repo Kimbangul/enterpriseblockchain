@@ -97,7 +97,7 @@
 
     &:last-child {
       font-size: 2.4rem;
-      line-height: 1.6;
+      line-height: $size__p-line-height;
     }
   }
   &__arrow-down {
@@ -116,6 +116,8 @@
   }
 }
 // // 인트로
+
+// 섹션2
 .mission {
   min-height: 100vh;
   &__dimmer {
@@ -130,12 +132,12 @@
     @include util__center-text;
     font-size: 10rem;
     color: $color__white;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.2;
     z-index: 1;
     &:nth-of-type(2) {
       font-size: 2.4rem;
-      line-height: 1.6;
+      line-height: $size__p-line-height;
     }
   }
   &__bg {
@@ -153,6 +155,76 @@
     }
   }
 }
+// // 섹션2
+.service-target {
+  &__inner {
+    @include util__flex(stretch, center);
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    min-height: 100vh;
+  }
+  &__text {
+    &-container {
+      width: 100%;
+    }
+  }
+  &__head {
+    @include util__head-title;
+  }
+  &__desc {
+    @include util__flex(flex-end);
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: $size__p-line-height;
+    margin-left: auto;
+  }
+  &__scroller {
+    @include util__flex(center, center);
+    height: 72rem;
+    background: url('/assets/images/section_03_01.jpg');
+    background-size: cover;
+    &-text {
+      @include util__head-title;
+      text-align: center;
+      color: $color__white;
+    }
+  }
+}
+
+// 섹션 4
+.talent {
+  &__inner {
+    display: grid;
+    grid-template-columns: 3fr 5fr;
+    min-height: 100vh;
+  }
+  &__head {
+    @include util__flex(stretch, center);
+    @include util__head-title;
+  }
+  &__img {
+    width: 100%;
+    &-container {
+      width: calc(50% - 2.5rem);
+      margin-right: 0;
+      margin-left: auto;
+      margin-top: 18rem;
+      &:first-child {
+        margin-top: 0;
+      }
+      &:nth-child(2n) {
+        margin-left: 0;
+        margin-right: auto;
+      }
+    }
+    &-desc {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-top: 1.2rem;
+    }
+  }
+}
+// // 섹션 4
 
 // 푸터
 .footer {
