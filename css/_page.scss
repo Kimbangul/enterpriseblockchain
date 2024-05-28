@@ -29,6 +29,92 @@ body.--invert {
   bottom: 4rem;
   transform: translateX(-50%);
 }
+.card {
+  &__list {
+    @include util__flex(stretch, center, 2.4rem);
+  }
+  &__item {
+    @include util__flex(stretch, stretch, 0, column);
+    border-radius: 2rem;
+    padding: 2.4rem;
+    width: 30.4rem;
+    height: 40.8rem;
+    border: 1px solid red;
+  }
+  &__title {
+    font-size: 3.6rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    &-container {
+      @include util__flex(space-between, flex-start);
+    }
+    &-caption {
+      @include util__flex(stretch, flex-end, 0, column);
+      font-size: 3rem;
+
+      &-text {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-top: -1.2rem;
+      }
+    }
+  }
+  &__content {
+    flex-grow: 1;
+    font-weight: 700;
+    line-height: $size__p-line-height;
+    &-desc {
+      margin-top: 2.4rem;
+    }
+    &-text {
+      margin-top: 0.4rem;
+      &-list {
+        margin-top: 1.6rem;
+      }
+      &-item {
+        margin-top: 0.4rem;
+      }
+    }
+    &-list {
+      margin-top: 3.2rem;
+    }
+    &-item {
+      margin-top: 2.4rem;
+      &-title {
+        font-size: 1.6rem;
+      }
+      &-text {
+        margin-top: 0.4rem;
+      }
+    }
+  }
+  &__account {
+    @include util__flex(stretch, center, 0.8rem);
+    font-size: 1.4rem;
+    font-weight: 700;
+    &-profile {
+      width: 3.6rem;
+      height: 3.6rem;
+      border-radius: 100%;
+      background: #ff009d;
+    }
+  }
+  &__sub {
+    &-title {
+      @include util__flex(space-between, center);
+      font-size: 1.6rem;
+      font-weight: 800;
+      position: relative;
+      &::after {
+        content: '';
+        display: block;
+        width: 4rem;
+        height: 4rem;
+        background: url('/assets/images/contract_icon.png');
+      }
+    }
+  }
+}
 
 // 섹션
 .sc {
@@ -294,16 +380,33 @@ body.--invert {
     top: 50%;
     transform: translateY(-50%);
   }
+  &__desc {
+    @include util__desc;
+    margin-left: 10.4rem;
+    flex-shrink: 0;
+  }
 }
 .data-id {
   padding: 2.4rem 0;
   &__icon {
     @include util__flex(center, center);
+    position: relative;
     width: 30rem;
     height: 30rem;
     border: 0.2rem solid $color__white;
     border-radius: 5.8rem;
     background: $color__black;
+
+    &::after {
+      @include util__arrow($color__white);
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: calc(100% + 1.2rem);
+      transform: translateY(-50%) rotate(45deg);
+    }
+
     img {
       width: 16rem;
       height: 16rem;
@@ -311,6 +414,11 @@ body.--invert {
     }
     &-item {
       position: relative;
+      &:last-child .data-id__icon {
+        &::after {
+          display: none;
+        }
+      }
     }
     &-list {
       @include util__flex(stretch, center, 6.4rem);
@@ -346,7 +454,7 @@ body.--invert {
   height: 17.4rem;
   position: relative;
   &__text {
-    font-size: 2.4rem;
+    font-size: 3.6rem;
     color: $color__white;
     font-weight: 700;
     position: absolute;
@@ -354,6 +462,7 @@ body.--invert {
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     z-index: 1;
+    white-space: nowrap;
   }
   &__chip {
     display: inline-block;
@@ -375,6 +484,63 @@ body.--invert {
     }
   }
 }
+
+.creator {
+  background: url('/assets/images/section_06_01.jpeg');
+  background-size: cover;
+  background-position: center;
+  &__title {
+    font-size: 5.4rem;
+    line-height: 1.2;
+  }
+  &__inner {
+    @include util__flex(center, stretch, 0, column);
+  }
+  &__desc {
+    @include util__desc;
+    line-height: 1.9;
+    margin-top: 2.6rem;
+  }
+  &__text-container {
+    position: absolute;
+    left: 15rem;
+    color: $color__white;
+  }
+}
+
+.ground {
+  &__inner {
+    @include util__flex(center, flex-start, 0, column);
+  }
+  &__title {
+    font-size: 5.4rem;
+  }
+  &__desc {
+    font-size: 1.8rem;
+    line-height: 1.9;
+    font-weight: 700;
+    margin-top: 3.4rem;
+  }
+}
+
+.btn {
+  @include util__flex(center, center);
+  padding: 0.2rem 2rem;
+  height: 4.8rem;
+  border: 0.2rem solid $color__black;
+  font-size: 1.8rem;
+  font-weight: 700;
+  &--black {
+    @extend .btn;
+    background: $color__black;
+    color: $color__white;
+  }
+  &-container {
+    @include util__flex(stretch, center, 1.8rem);
+    margin-top: 7rem;
+  }
+}
+
 // 푸터
 .footer {
   padding: 5.8rem 0;
