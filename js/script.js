@@ -24,7 +24,7 @@ const animation = {
       endTrigger: 'html',
       start: 'top top',
       end: 'bottom top',
-      markers: true,
+      //markers: true,
       toggleClass: { targets: '.header', className: 'header--invert' },
     });
   },
@@ -200,12 +200,14 @@ const animation = {
   },
   setData: () => {
     const section = document.querySelector('.data-id');
+    const end = document.querySelector(".sc[data-section='8']");
+    console.log(end);
 
     ScrollTrigger.create({
       trigger: '.data-id',
-      endTrigger: ".sc[data-section='8']",
+      endTrigger: end,
       // end: 'bottom top',
-      end: 'bottom',
+      end: 'top top',
       start: 'top top',
       toggleClass: { targets: 'body', className: '--invert' },
       markers: true,
@@ -241,10 +243,11 @@ const registAnimation = () => {
   animation.setIntro();
   animation.setMission();
   animation.setTalent();
-  animation.setData();
+
   animation.setHorizonScroller();
   animation.setTextScroller();
   animation.setHeaderPosition();
+  animation.setData();
 };
 
 (function () {

@@ -1,7 +1,10 @@
 body.--invert {
   background: $color__black;
 
-  .data-id__title {
+  .scroller-section__title {
+    color: $color__white;
+  }
+  .text-section {
     color: $color__white;
   }
 }
@@ -20,10 +23,22 @@ body.--invert {
   filter: invert(1);
 }
 
+.arrow-down {
+  position: absolute;
+  left: 50%;
+  bottom: 4rem;
+  transform: translateX(-50%);
+}
+
 // 섹션
 .sc {
   position: relative;
   overflow: hidden;
+  &--full {
+    .sc__inner {
+      min-height: 100vh;
+    }
+  }
   &__inner {
     @include util__inner;
     height: 100%;
@@ -96,7 +111,6 @@ body.--invert {
 
 // 인트로
 .intro {
-  min-height: 100vh;
   &__desc {
     @include util__center-text;
     opacity: 0;
@@ -109,12 +123,6 @@ body.--invert {
       font-size: 2.4rem;
       line-height: $size__p-line-height;
     }
-  }
-  &__arrow-down {
-    position: absolute;
-    left: 50%;
-    bottom: 4rem;
-    transform: translateX(-50%);
   }
   &__video {
     &-container {
@@ -129,7 +137,6 @@ body.--invert {
 
 // 섹션2
 .mission {
-  min-height: 100vh;
   &__dimmer {
     position: absolute;
     top: 0;
@@ -153,7 +160,6 @@ body.--invert {
   &__bg {
     top: 0;
     bottom: 0;
-    //bottom: 100vh;
     height: auto;
     overflow: hidden;
     &[data-bg='1'] {
@@ -167,14 +173,12 @@ body.--invert {
 }
 // // 섹션2
 .text-section {
-  &--invert {
-    color: $color__white;
-  }
+  transition: color 0.3s;
   &__inner {
     @include util__flex(stretch, center);
     padding-top: 8rem;
     padding-bottom: 8rem;
-    min-height: 100vh;
+    // min-height: 100vh;
   }
   &__text {
     &-container {
@@ -196,13 +200,13 @@ body.--invert {
     position: relative;
     height: 72rem;
     background-size: cover;
+    background-position: center;
+    padding: 18rem 0;
     &[data-scroller='1'] {
-      background: url('/assets/images/text_scroller_01.jpg');
+      background-image: url('/assets/images/text_scroller_01.jpg');
     }
     &[data-scroller='2'] {
-      background: url('/assets/images/text_scroller_02.jpg');
-      background-position: center;
-      background-size: cover;
+      background-image: url('/assets/images/text_scroller_02.jpg');
     }
     &-text {
       @include util__head-title;
@@ -212,16 +216,16 @@ body.--invert {
     &-item {
       position: absolute;
       top: 0;
-      left: 0;
+      right: 0;
       width: 0;
       max-width: 22%;
-      height: 25%;
+      height: 14rem;
       background: $color__white;
       &:last-child {
         top: unset;
         bottom: 0;
-        left: unset;
-        right: 0;
+        left: 0;
+        right: unset;
       }
     }
   }
@@ -232,7 +236,6 @@ body.--invert {
   &__inner {
     display: grid;
     grid-template-columns: 3fr 5fr;
-    height: 100vh;
     overflow: hidden;
   }
   &__head {
@@ -275,7 +278,7 @@ body.--invert {
 .scroller-section {
   &__inner {
     @include util__flex(stretch, stretch, 0, column);
-    min-height: 100vh;
+    // min-height: 100vh;
   }
   &__title {
     @include util__head-title;

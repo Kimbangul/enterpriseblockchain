@@ -63,7 +63,10 @@ button {
 body.--invert {
   background: #000;
 }
-body.--invert .data-id__title {
+body.--invert .scroller-section__title {
+  color: #fff;
+}
+body.--invert .text-section {
   color: #fff;
 }
 
@@ -87,9 +90,19 @@ body.--invert .data-id__title {
   filter: invert(1);
 }
 
+.arrow-down {
+  position: absolute;
+  left: 50%;
+  bottom: 4rem;
+  transform: translateX(-50%);
+}
+
 .sc {
   position: relative;
   overflow: hidden;
+}
+.sc--full .sc__inner {
+  min-height: 100vh;
 }
 .sc__inner {
   padding: 0 10rem;
@@ -176,9 +189,6 @@ body.--invert .data-id__title {
   top: 0;
 }
 
-.intro {
-  min-height: 100vh;
-}
 .intro__desc {
   position: absolute;
   top: 50%;
@@ -194,12 +204,6 @@ body.--invert .data-id__title {
 .intro__desc:last-child {
   font-size: 2.4rem;
   line-height: 1.6;
-}
-.intro__arrow-down {
-  position: absolute;
-  left: 50%;
-  bottom: 4rem;
-  transform: translateX(-50%);
 }
 .intro__video {
   width: 100%;
@@ -217,9 +221,6 @@ body.--invert .data-id__title {
   z-index: -1;
 }
 
-.mission {
-  min-height: 100vh;
-}
 .mission__dimmer {
   position: absolute;
   top: 0;
@@ -258,8 +259,8 @@ body.--invert .data-id__title {
   height: 100vh;
 }
 
-.text-section--invert {
-  color: #fff;
+.text-section {
+  transition: color 0.3s;
 }
 .text-section__inner {
   display: flex;
@@ -269,7 +270,6 @@ body.--invert .data-id__title {
   flex-direction: row;
   padding-top: 8rem;
   padding-bottom: 8rem;
-  min-height: 100vh;
 }
 .text-section__text-container {
   width: 100%;
@@ -298,14 +298,14 @@ body.--invert .data-id__title {
   position: relative;
   height: 72rem;
   background-size: cover;
+  background-position: center;
+  padding: 18rem 0;
 }
 .text-section__scroller[data-scroller="1"] {
-  background: url("/assets/images/text_scroller_01.jpg");
+  background-image: url("/assets/images/text_scroller_01.jpg");
 }
 .text-section__scroller[data-scroller="2"] {
-  background: url("/assets/images/text_scroller_02.jpg");
-  background-position: center;
-  background-size: cover;
+  background-image: url("/assets/images/text_scroller_02.jpg");
 }
 .text-section__scroller-text {
   font-size: 7.2rem;
@@ -316,23 +316,22 @@ body.--invert .data-id__title {
 .text-section__scroller-item {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   width: 0;
   max-width: 22%;
-  height: 25%;
+  height: 14rem;
   background: #fff;
 }
 .text-section__scroller-item:last-child {
   top: unset;
   bottom: 0;
-  left: unset;
-  right: 0;
+  left: 0;
+  right: unset;
 }
 
 .talent__inner {
   display: grid;
   grid-template-columns: 3fr 5fr;
-  height: 100vh;
   overflow: hidden;
 }
 .talent__head {
@@ -380,7 +379,6 @@ body.--invert .data-id__title {
   align-items: stretch;
   gap: 0;
   flex-direction: column;
-  min-height: 100vh;
 }
 .scroller-section__title {
   font-size: 7.2rem;
