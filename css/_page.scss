@@ -145,7 +145,7 @@ body.--invert {
     font-weight: 700;
     line-height: 1.2;
     z-index: 1;
-    &:nth-of-type(2) {
+    &:nth-child(2) {
       font-size: 2.4rem;
       line-height: $size__p-line-height;
     }
@@ -195,8 +195,15 @@ body.--invert {
     @include util__flex(center, center);
     position: relative;
     height: 72rem;
-    background: url('/assets/images/section_03_01.jpg');
     background-size: cover;
+    &[data-scroller='1'] {
+      background: url('/assets/images/text_scroller_01.jpg');
+    }
+    &[data-scroller='2'] {
+      background: url('/assets/images/text_scroller_02.jpg');
+      background-position: center;
+      background-size: cover;
+    }
     &-text {
       @include util__head-title;
       text-align: center;
@@ -265,18 +272,10 @@ body.--invert {
 // // 섹션 4
 
 // 섹션 5
-.data-id {
-  padding: 2.4rem 0;
+.scroller-section {
   &__inner {
     @include util__flex(stretch, stretch, 0, column);
     min-height: 100vh;
-  }
-  &__scroller {
-    @include util__flex(stretch, center);
-    flex-grow: 1;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
   }
   &__title {
     @include util__head-title;
@@ -285,6 +284,16 @@ body.--invert {
     margin-right: 16rem;
     transition: color 0.3s;
   }
+  &__scroller {
+    @include util__flex(stretch, center);
+    flex-grow: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.data-id {
+  padding: 2.4rem 0;
   &__icon {
     @include util__flex(center, center);
     width: 30rem;

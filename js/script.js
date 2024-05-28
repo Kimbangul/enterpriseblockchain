@@ -18,6 +18,15 @@ const animation = {
       end: 'top top',
       toggleClass: { targets: '.header', className: 'header--invert' },
     });
+
+    ScrollTrigger.create({
+      trigger: ".sc[data-section='8']",
+      endTrigger: 'html',
+      start: 'top top',
+      end: 'bottom top',
+      markers: true,
+      toggleClass: { targets: '.header', className: 'header--invert' },
+    });
   },
   setIntro: () => {
     const introDesc = gsap.utils.toArray('.intro__desc');
@@ -49,7 +58,7 @@ const animation = {
     });
   },
   setMission: () => {
-    const splitLine = new SplitType('.mission__desc:first-of-type', {
+    const splitLine = new SplitType('.mission__desc:first-child', {
       types: 'lines',
     });
     const tl = gsap.timeline({
@@ -61,7 +70,7 @@ const animation = {
       },
     });
 
-    tl.from('.mission__dimmer, .mission__desc:first-of-type', {
+    tl.from('.mission__dimmer, .mission__desc:first-child', {
       opacity: 0,
     })
       .to(
@@ -85,7 +94,7 @@ const animation = {
         },
         'line-animate'
       )
-      .to('.mission__desc:first-of-type', {
+      .to('.mission__desc:first-child', {
         opacity: 0,
       })
       .progress(0.1);
@@ -104,7 +113,7 @@ const animation = {
       .progress(0.8);
 
     tl.from(
-      '.mission__desc:nth-of-type(2)',
+      '.mission__desc:nth-child(2)',
       {
         opacity: 0,
       },
@@ -118,58 +127,60 @@ const animation = {
       'out'
     );
   },
-  setService: () => {
-    const splitLine = new SplitType('.text-section__scroller-text', {
-      types: 'lines',
-    });
-    const bgItem = gsap.utils.toArray('.text-section__scroller-item');
-    console.log(bgItem);
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.text-section__scroller',
-        scrub: true,
-        end: 'bottom bottom',
-      },
-    });
-    const tl2 = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.text-section__scroller',
-        scrub: true,
-        start: 'top center',
-        end: 'bottom top',
-      },
-    });
+  setTextScroller: () => {
+    const textScroller = gsap.utils.toArray('.text-section__scroller');
+    textScroller.forEach((el, idx) => {
+      const text = el.querySelector('.text-section__scroller-text');
+      const bgItem = el.querySelectorAll('.text-section__scroller-item');
+      const splitLine = new SplitType(text, {
+        types: 'lines',
+      });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          scrub: true,
+          end: 'bottom bottom',
+        },
+      });
+      const tl2 = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          scrub: true,
+          start: 'top center',
+          end: 'bottom top',
+        },
+      });
 
-    tl.to(
-      splitLine.lines[0],
-      {
-        xPercent: -70,
-      },
-      'text'
-    ).to(
-      splitLine.lines[2],
-      {
-        xPercent: 70,
-      },
-      'text'
-    );
-
-    tl2
-      .to(
-        bgItem[0],
+      tl.to(
+        splitLine.lines[0],
         {
-          width: '100%',
+          xPercent: -70,
         },
         'text'
-      )
-      .addLabel('start====')
-      .to(
-        bgItem[1],
+      ).to(
+        splitLine.lines[2],
         {
-          width: '100%',
+          xPercent: 70,
         },
         'text'
       );
+
+      tl2
+        .to(
+          bgItem[0],
+          {
+            width: '100%',
+          },
+          'text'
+        )
+        .to(
+          bgItem[1],
+          {
+            width: '100%',
+          },
+          'text'
+        );
+    });
   },
   setTalent: () => {
     const scroller = document.querySelector('.talent__img-scroller');
@@ -188,15 +199,16 @@ const animation = {
     });
   },
   setData: () => {
-    const scroller = document.querySelector('.data-id__scroller');
+    const section = document.querySelector('.data-id');
+    const scroller = section.querySelector('.scroller-section__scroller');
     ScrollTrigger.create({
       trigger: '.data-id',
-      endTrigger: 'html',
+      endTrigger: ".sc[data-section='8']",
       // end: 'bottom top',
       end: 'bottom',
       start: 'top top',
       toggleClass: { targets: 'body', className: '--invert' },
-      markers: true,
+      // markers: true,
     });
 
     const tl = gsap.timeline({
@@ -219,9 +231,9 @@ const animation = {
 const registAnimation = () => {
   animation.setIntro();
   animation.setMission();
-  animation.setService();
   animation.setTalent();
   animation.setData();
+  animation.setTextScroller();
   animation.setHeaderPosition();
 };
 
