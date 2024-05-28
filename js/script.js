@@ -200,7 +200,7 @@ const animation = {
   },
   setData: () => {
     const section = document.querySelector('.data-id');
-    const scroller = section.querySelector('.scroller-section__scroller');
+
     ScrollTrigger.create({
       trigger: '.data-id',
       endTrigger: ".sc[data-section='8']",
@@ -208,21 +208,30 @@ const animation = {
       end: 'bottom',
       start: 'top top',
       toggleClass: { targets: 'body', className: '--invert' },
-      // markers: true,
+      markers: true,
     });
+  },
+  setHorizonScroller: () => {
+    const scrollerSection = gsap.utils.toArray('.scroller-section');
+    scrollerSection.forEach((el, idx) => {
+      const inner = el.querySelector('.scroller-section__inner');
+      const scroller = el.querySelector('.scroller-section__scroller');
+      console.log(scroller);
+      console.log(scroller.offsetWidth);
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.data-id__inner',
-        pin: true,
-        yoyo: true,
-        scrub: true,
-        end: `+=${scroller.offsetWidth}`,
-      },
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: inner,
+          pin: true,
+          yoyo: true,
+          scrub: true,
+          end: `+=${scroller.offsetWidth}`,
+        },
+      });
 
-    tl.to(scroller, {
-      xPercent: -100,
+      tl.to(scroller, {
+        xPercent: -100,
+      });
     });
   },
 };
@@ -233,6 +242,7 @@ const registAnimation = () => {
   animation.setMission();
   animation.setTalent();
   animation.setData();
+  animation.setHorizonScroller();
   animation.setTextScroller();
   animation.setHeaderPosition();
 };
