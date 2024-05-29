@@ -22,12 +22,25 @@ body.--invert {
   height: 100%;
   filter: invert(1);
 }
-
-.arrow-down {
-  position: absolute;
-  left: 50%;
-  bottom: 4rem;
-  transform: translateX(-50%);
+.arrow {
+  &-down {
+    position: absolute;
+    left: 50%;
+    bottom: 4rem;
+    transform: translateX(-50%);
+  }
+  &-container {
+    @include util__flex(stretch, center);
+    margin-top: 1.4rem;
+  }
+  &-icon {
+    @include util__arrow(#000);
+  }
+  &-title {
+    font-size: 1.8rem;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
 }
 .card {
   &__list {
@@ -37,7 +50,9 @@ body.--invert {
     @include util__flex(stretch, stretch, 0, column);
     border-radius: 2rem;
     padding: 2.4rem;
-    width: 30.4rem;
+    // width: 40rem;
+    // height: 54rem;
+    width: 30.8rem;
     height: 40.8rem;
     border: 1px solid red;
   }
@@ -88,6 +103,23 @@ body.--invert {
       }
     }
   }
+  &__code-img {
+    width: 100%;
+    padding-top: 2.8rem;
+    padding-right: 2.8rem;
+  }
+  &__img-container {
+    height: 100%;
+    position: relative;
+  }
+  &__img-icon {
+    width: 15rem;
+    height: 12.5rem;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+  }
   &__account {
     @include util__flex(stretch, center, 0.8rem);
     font-size: 1.4rem;
@@ -111,6 +143,7 @@ body.--invert {
         width: 4rem;
         height: 4rem;
         background: url('/assets/images/contract_icon.png');
+        background-size: contain;
       }
     }
   }

@@ -96,6 +96,28 @@ body.--invert .text-section {
   bottom: 4rem;
   transform: translateX(-50%);
 }
+.arrow-container {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  gap: 0;
+  flex-direction: row;
+  margin-top: 1.4rem;
+}
+.arrow-icon {
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 0.8rem solid #000;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+  border-left: none;
+  border-bottom: none;
+}
+.arrow-title {
+  font-size: 1.8rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
 
 .card__list {
   display: flex;
@@ -112,7 +134,7 @@ body.--invert .text-section {
   flex-direction: column;
   border-radius: 2rem;
   padding: 2.4rem;
-  width: 30.4rem;
+  width: 30.8rem;
   height: 40.8rem;
   border: 1px solid red;
 }
@@ -170,6 +192,23 @@ body.--invert .text-section {
 .card__content-item-text {
   margin-top: 0.4rem;
 }
+.card__code-img {
+  width: 100%;
+  padding-top: 2.8rem;
+  padding-right: 2.8rem;
+}
+.card__img-container {
+  height: 100%;
+  position: relative;
+}
+.card__img-icon {
+  width: 15rem;
+  height: 12.5rem;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+}
 .card__account {
   display: flex;
   justify-content: stretch;
@@ -201,6 +240,7 @@ body.--invert .text-section {
   width: 4rem;
   height: 4rem;
   background: url("/assets/images/contract_icon.png");
+  background-size: contain;
 }
 
 .sc {
@@ -381,7 +421,7 @@ body.--invert .text-section {
   width: 100%;
 }
 .text-section__head {
-  font-size: 7.2rem;
+  font-size: 5.4rem;
   font-weight: 700;
 }
 .text-section__desc {
@@ -414,7 +454,7 @@ body.--invert .text-section {
   background-image: url("/assets/images/text_scroller_02.jpg");
 }
 .text-section__scroller-text {
-  font-size: 7.2rem;
+  font-size: 5.4rem;
   font-weight: 700;
   text-align: center;
   color: #fff;
@@ -446,7 +486,7 @@ body.--invert .text-section {
   align-items: center;
   gap: 0;
   flex-direction: row;
-  font-size: 7.2rem;
+  font-size: 5.4rem;
   font-weight: 700;
 }
 .talent__img {
@@ -487,7 +527,7 @@ body.--invert .text-section {
   flex-direction: column;
 }
 .scroller-section__title {
-  font-size: 7.2rem;
+  font-size: 5.4rem;
   font-weight: 700;
   font-weight: 800;
   flex-shrink: 0;
@@ -530,8 +570,8 @@ body.--invert .text-section {
   background: #000;
 }
 .data-id__icon::after {
-  width: 3rem;
-  height: 3rem;
+  width: 2.6rem;
+  height: 2.6rem;
   border: 0.8rem solid #fff;
   transform: rotate(45deg);
   box-sizing: border-box;
