@@ -32,14 +32,47 @@ body.--invert {
   &-container {
     @include util__flex(stretch, center);
     margin-top: 1.4rem;
+    height: 2.7rem;
   }
   &-icon {
     @include util__arrow(#000);
+    border: none;
+    position: relative;
+    margin-left: -0.6rem;
+
+    animation: ani__arrow 1s infinite alternate;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      bottom: -0.2rem;
+      left: -0.2rem;
+      width: calc(100% - 0.6rem);
+      height: calc(100% - 0.6rem);
+      background: $color__white;
+    }
+    $gradient: linear-gradient(45deg, #ee5787 55%, #{$color__blue} 140%),
+      linear-gradient(45deg, #ee5787 30%, #{$color__blue} 120%),
+      linear-gradient(45deg, #ee5787 10%, #{$color__blue} 100%),
+      linear-gradient(45deg, #ee5787 5%, #{$color__blue} 70%, #43cf2e 160%),
+      linear-gradient(45deg, #ee5787 5%, #{$color__blue} 50%, #43cf2e 140%),
+      linear-gradient(45deg, #ee5787 0%, #{$color__blue} 30%, #43cf2e 120%),
+      linear-gradient(45deg, #{$color__blue}, #43cf2e 85%);
+
+    @for $i from 1 to 8 {
+      &:nth-child(#{$i}) {
+        background: nth($gradient, $i);
+        animation-delay: #{0.1 * $i}s;
+        z-index: #{8 - $i};
+      }
+    }
   }
   &-title {
     font-size: 1.8rem;
     margin-top: 1.5rem;
     text-align: center;
+    font-weight: 700;
   }
 }
 .card {
@@ -55,6 +88,10 @@ body.--invert {
     width: 30.8rem;
     height: 40.8rem;
     border: 1px solid red;
+
+    &.pink {
+      background: $color__pink;
+    }
   }
   &__title {
     font-size: 3.6rem;
@@ -177,7 +214,6 @@ body.--invert {
 }
 // //섹션
 
-// 헤더
 .header {
   width: 100%;
   position: fixed;
@@ -226,9 +262,6 @@ body.--invert {
     top: 0;
   }
 }
-// // 헤더
-
-// 인트로
 .intro {
   &__desc {
     @include util__center-text;
@@ -252,9 +285,6 @@ body.--invert {
     object-fit: cover;
   }
 }
-// // 인트로
-
-// 섹션2
 .mission {
   &__dimmer {
     position: absolute;
@@ -290,7 +320,6 @@ body.--invert {
     }
   }
 }
-// // 섹션2
 .text-section {
   transition: color 0.3s;
   &__inner {
@@ -349,8 +378,6 @@ body.--invert {
     }
   }
 }
-
-// 섹션 4
 .talent {
   &__inner {
     display: grid;
@@ -383,7 +410,6 @@ body.--invert {
     }
     &-scroller {
       position: absolute;
-      transform: translateY(100%);
       &-container {
         width: 100%;
         height: 100%;
@@ -391,13 +417,13 @@ body.--invert {
     }
   }
 }
-// // 섹션 4
 
-// 섹션 5
 .scroller-section {
+  @include util__flex();
+  padding: 0;
+  min-height: 100vh;
   &__inner {
-    @include util__flex(stretch, stretch, 0, column);
-    // min-height: 100vh;
+    @include util__flex(center, stretch, 0, column);
   }
   &__title {
     @include util__head-title;
@@ -408,14 +434,18 @@ body.--invert {
   }
   &__scroller {
     @include util__flex(stretch, center);
+    @include util__inner;
     flex-grow: 1;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    flex-shrink: 0;
+    // position: absolute;
+    width: auto;
+    // left: 0;
+    // top: 50%;
+    // transform: translateY(-50%);
   }
   &__desc {
     @include util__desc;
-    margin-left: 10.4rem;
+    padding-left: 10.4rem;
     flex-shrink: 0;
   }
 }
@@ -466,22 +496,24 @@ body.--invert {
     }
   }
   &__img {
-    width: 50.6rem;
-    height: 53.6rem;
-    margin-left: 50rem;
-    flex-shrink: 0;
+    width: 100vw;
     img {
-      width: 100%;
+      width: 50.6rem;
+      height: 53.6rem;
+      object-fit: contain;
+      margin: 0 auto;
+      padding-left: 10rem;
     }
   }
   &__caption {
+    @include util__inner;
     position: absolute;
     bottom: 4vh;
     color: rgba(255, 255, 255, 0.6);
     line-height: $size__p-line-height;
   }
 }
-// // 섹션 5
+
 .color-scroller {
   width: 100%;
   height: 17.4rem;
@@ -504,14 +536,14 @@ body.--invert {
     position: absolute;
     left: 0;
     &:nth-of-type(1) {
-      background: #e657af;
+      background: $color__pink;
     }
     &:nth-of-type(2) {
-      background: #0049ff;
+      background: $color__blue;
       left: 33.3%;
     }
     &:nth-of-type(3) {
-      background: #00bf41;
+      background: $color__green;
       left: unset;
       right: 0;
     }

@@ -20,11 +20,21 @@ const animation = {
     });
 
     ScrollTrigger.create({
+      trigger: '.data-id',
+      endTrigger: ".sc[data-section='8']",
+      // end: 'bottom top',
+      //end: 'top top',
+      start: 'top top',
+      //end: 'top top',
+      toggleClass: { targets: 'body', className: '--invert' },
+      markers: true,
+    });
+
+    ScrollTrigger.create({
       trigger: ".sc[data-section='8']",
       endTrigger: 'html',
-      start: 'top top',
+      start: 'top bottom',
       end: 'bottom top',
-      //markers: true,
       toggleClass: { targets: '.header', className: 'header--invert' },
     });
   },
@@ -190,40 +200,31 @@ const animation = {
         pin: true,
         yoyo: true,
         scrub: true,
-        end: `+=${scroller.offsetHeight}`,
+        start: 'top top',
+        end: `+=${scroller.offsetHeight * 4.5} center`,
       },
     });
 
-    tl.to('.talent__img-scroller', {
-      yPercent: -200,
-    });
-  },
-  setData: () => {
-    const section = document.querySelector('.data-id');
-    const end = document.querySelector(".sc[data-section='8']");
-    console.log(end);
-
-    ScrollTrigger.create({
-      trigger: '.data-id',
-      endTrigger: end,
-      // end: 'bottom top',
-      end: 'top top',
-      start: 'top top',
-      toggleClass: { targets: 'body', className: '--invert' },
-      markers: true,
-    });
+    tl.fromTo(
+      '.talent__img-scroller',
+      {
+        yPercent: 100,
+      },
+      {
+        yPercent: -100,
+      }
+    );
   },
   setHorizonScroller: () => {
     const scrollerSection = gsap.utils.toArray('.scroller-section');
     scrollerSection.forEach((el, idx) => {
-      const inner = el.querySelector('.scroller-section__inner');
       const scroller = el.querySelector('.scroller-section__scroller');
       console.log(scroller);
       console.log(scroller.offsetWidth);
 
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: inner,
+          trigger: el,
           pin: true,
           yoyo: true,
           scrub: true,
@@ -233,6 +234,7 @@ const animation = {
 
       tl.to(scroller, {
         xPercent: -100,
+        x: '100vw',
       });
     });
   },
@@ -243,11 +245,10 @@ const registAnimation = () => {
   animation.setIntro();
   animation.setMission();
   animation.setTalent();
-
   animation.setHorizonScroller();
   animation.setTextScroller();
   animation.setHeaderPosition();
-  animation.setData();
+  // animation.setData();
 };
 
 (function () {
