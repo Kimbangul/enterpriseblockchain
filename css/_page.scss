@@ -280,6 +280,9 @@ body.--invert {
     @include util__inner;
     height: 100%;
   }
+  &__title {
+    @include util__head-title;
+  }
   &__bg {
     @include util__bg;
     display: inline-block;
@@ -414,9 +417,6 @@ body.--invert {
       width: 100%;
     }
   }
-  &__head {
-    @include util__head-title;
-  }
   &__desc {
     @include util__flex(flex-end);
     font-size: 2.4rem;
@@ -438,7 +438,6 @@ body.--invert {
       background-image: url('/assets/images/text_scroller_02.jpg');
     }
     &-text {
-      @include util__head-title;
       text-align: center;
       color: $color__white;
     }
@@ -467,7 +466,6 @@ body.--invert {
   }
   &__head {
     @include util__flex(stretch, center);
-    @include util__head-title;
   }
   &__img {
     width: 100%;
@@ -507,7 +505,6 @@ body.--invert {
     @include util__flex(center, stretch, 0, column);
   }
   &__title {
-    @include util__head-title;
     font-weight: 800;
     flex-shrink: 0;
     margin-right: 16rem;
@@ -642,10 +639,6 @@ body.--invert {
 }
 
 .creator {
-  &__title {
-    @include util__head-title;
-    line-height: 1.2;
-  }
   &__inner {
     @include util__flex(center, stretch, 0, column);
     background: url('/assets/images/section_06_01.jpeg');
@@ -667,9 +660,6 @@ body.--invert {
 .ground {
   &__inner {
     @include util__flex(center, flex-start, 0, column);
-  }
-  &__title {
-    @include util__head-title;
   }
   &__desc {
     font-size: 1.8rem;

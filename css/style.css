@@ -423,6 +423,10 @@ body.--invert .text-section {
   padding: 0 10rem;
   height: 100%;
 }
+.sc__title {
+  font-size: 5.4rem;
+  font-weight: 800;
+}
 .sc__bg {
   overflow: hidden;
   position: absolute;
@@ -589,10 +593,6 @@ body.--invert .text-section {
 .text-section__text-container {
   width: 100%;
 }
-.text-section__head {
-  font-size: 5.4rem;
-  font-weight: 700;
-}
 .text-section__desc {
   display: flex;
   justify-content: flex-end;
@@ -623,8 +623,6 @@ body.--invert .text-section {
   background-image: url("/assets/images/text_scroller_02.jpg");
 }
 .text-section__scroller-text {
-  font-size: 5.4rem;
-  font-weight: 700;
   text-align: center;
   color: #fff;
 }
@@ -655,8 +653,6 @@ body.--invert .text-section {
   align-items: center;
   gap: 0;
   flex-direction: row;
-  font-size: 5.4rem;
-  font-weight: 700;
 }
 .talent__img {
   width: 100%;
@@ -704,8 +700,6 @@ body.--invert .text-section {
   flex-direction: column;
 }
 .scroller-section__title {
-  font-size: 5.4rem;
-  font-weight: 700;
   font-weight: 800;
   flex-shrink: 0;
   margin-right: 16rem;
@@ -854,11 +848,6 @@ body.--invert .text-section {
           backdrop-filter: blur(2rem);
 }
 
-.creator__title {
-  font-size: 5.4rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
 .creator__inner {
   display: flex;
   justify-content: center;
@@ -888,10 +877,6 @@ body.--invert .text-section {
   align-items: flex-start;
   gap: 0;
   flex-direction: column;
-}
-.ground__title {
-  font-size: 5.4rem;
-  font-weight: 700;
 }
 .ground__desc {
   font-size: 1.8rem;
