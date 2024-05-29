@@ -12,7 +12,7 @@ const animation = {
 
     // invert
     ScrollTrigger.create({
-      trigger: '.text-section__inner',
+      trigger: ".sc[data-section='3']",
       endTrigger: '.data-id',
       start: 'top top',
       end: 'top top',
@@ -27,7 +27,7 @@ const animation = {
       start: 'top top',
       //end: 'top top',
       toggleClass: { targets: 'body', className: '--invert' },
-      markers: true,
+      //markers: true,
     });
 
     ScrollTrigger.create({
@@ -148,14 +148,14 @@ const animation = {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: el,
-          scrub: true,
+          scrub: 1.5,
           end: 'bottom bottom',
         },
       });
       const tl2 = gsap.timeline({
         scrollTrigger: {
           trigger: el,
-          scrub: true,
+          scrub: 2,
           start: 'top center',
           end: 'bottom top',
         },
@@ -199,9 +199,9 @@ const animation = {
         trigger: '.talent__inner',
         pin: true,
         yoyo: true,
-        scrub: true,
+        scrub: 3,
         start: 'top top',
-        end: `+=${scroller.offsetHeight * 4.5} center`,
+        end: `+=${scroller.offsetHeight * 2} center`,
       },
     });
 
@@ -219,8 +219,6 @@ const animation = {
     const scrollerSection = gsap.utils.toArray('.scroller-section');
     scrollerSection.forEach((el, idx) => {
       const scroller = el.querySelector('.scroller-section__scroller');
-      console.log(scroller);
-      console.log(scroller.offsetWidth);
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -238,6 +236,41 @@ const animation = {
       });
     });
   },
+  setCreator: () => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.creator',
+        pin: true,
+        yoyo: true,
+        scrub: true,
+        start: 'top top',
+        //!SECTIONend: 'bottom bottom',
+        end: `+=${window.innerHeight * 2}`,
+        markers: true,
+      },
+    });
+
+    // tl.from('.creator__text-container', {
+    //   opacity: 0,
+    // }).from('.creator .arrow-down', {
+    //   opacity: 0,
+    // });
+  },
+  setTicker: () => {
+    ScrollTrigger.create({
+      trigger: '.footer',
+      start: 'top bottom',
+      end: 'bottom top',
+      toggleClass: { targets: '.ticker', className: 'ticker--active' },
+    });
+
+    gsap.to('.ticker__inner', {
+      xPercent: -45,
+      repeat: -1,
+      duration: 5,
+      ease: 'none',
+    });
+  },
 };
 
 // FUNCTION gsap 애니메이션 등록
@@ -245,9 +278,13 @@ const registAnimation = () => {
   animation.setIntro();
   animation.setMission();
   animation.setTalent();
+
   animation.setHorizonScroller();
   animation.setTextScroller();
+  animation.setCreator();
   animation.setHeaderPosition();
+  animation.setTicker();
+
   // animation.setData();
 };
 

@@ -52,12 +52,9 @@ body.--invert {
       height: calc(100% - 0.6rem);
       background: $color__white;
     }
-    $gradient: linear-gradient(45deg, #ee5787 55%, #{$color__blue} 140%),
-      linear-gradient(45deg, #ee5787 30%, #{$color__blue} 120%),
-      linear-gradient(45deg, #ee5787 10%, #{$color__blue} 100%),
-      linear-gradient(45deg, #ee5787 5%, #{$color__blue} 70%, #43cf2e 160%),
-      linear-gradient(45deg, #ee5787 5%, #{$color__blue} 50%, #43cf2e 140%),
-      linear-gradient(45deg, #ee5787 0%, #{$color__blue} 30%, #43cf2e 120%),
+    $gradient: linear-gradient(45deg, #ee5787 55%, #{$color__blue} 140%), linear-gradient(45deg, #ee5787 30%, #{$color__blue} 120%),
+      linear-gradient(45deg, #ee5787 10%, #{$color__blue} 100%), linear-gradient(45deg, #ee5787 5%, #{$color__blue} 70%, #43cf2e 160%),
+      linear-gradient(45deg, #ee5787 5%, #{$color__blue} 50%, #43cf2e 140%), linear-gradient(45deg, #ee5787 0%, #{$color__blue} 30%, #43cf2e 120%),
       linear-gradient(45deg, #{$color__blue}, #43cf2e 85%);
 
     @for $i from 1 to 8 {
@@ -89,6 +86,7 @@ body.--invert {
     height: 40.8rem;
     color: $color__white;
     overflow: hidden;
+    flex-shrink: 0;
 
     &.pink {
       background: $color__pink;
@@ -112,8 +110,7 @@ body.--invert {
     }
 
     &.line-rainbow {
-      background: linear-gradient(#000, #000),
-        linear-gradient(315deg, #e657af, #0049ff, #43cf2e);
+      background: linear-gradient(#000, #000), linear-gradient(315deg, #e657af, #0049ff, #43cf2e);
       padding: 0;
       border: 2px solid transparent;
       background-origin: border-box;
@@ -254,6 +251,19 @@ body.--invert {
         background-size: contain;
       }
     }
+  }
+  &__text {
+    background-image: linear-gradient(90deg, #{$color__green}, #{$color__blue}, #{$color__pink});
+    background-size: cover;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3.6rem;
+    font-weight: 700;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
   }
 }
 
@@ -632,15 +642,15 @@ body.--invert {
 }
 
 .creator {
-  background: url('/assets/images/section_06_01.jpeg');
-  background-size: cover;
-  background-position: center;
   &__title {
-    font-size: 5.4rem;
+    @include util__head-title;
     line-height: 1.2;
   }
   &__inner {
     @include util__flex(center, stretch, 0, column);
+    background: url('/assets/images/section_06_01.jpeg');
+    background-size: cover;
+    background-position: center;
   }
   &__desc {
     @include util__desc;
@@ -659,7 +669,7 @@ body.--invert {
     @include util__flex(center, flex-start, 0, column);
   }
   &__title {
-    font-size: 5.4rem;
+    @include util__head-title;
   }
   &__desc {
     font-size: 1.8rem;
@@ -689,6 +699,22 @@ body.--invert {
 
 .ticker {
   overflow: hidden;
+  position: relative;
+  transform: translateY(100%);
+  transition: transform 0.3s 0.15s;
+
+  &--active {
+    transform: translateY(0);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    backdrop-filter: blur(2rem);
+  }
   &__inner {
     @include util__flex(flex-start, center);
   }
@@ -700,12 +726,15 @@ body.--invert {
     flex-shrink: 0;
     font-weight: 600;
     color: $color__white;
-    background-color: $color__pink;
 
-    &:nth-child(2n) {
+    &:nth-child(3n + 1) {
+      background-color: $color__pink;
+    }
+
+    &:nth-child(3n + 2) {
       background-color: $color__green;
     }
-    &:nth-child(3n) {
+    &:nth-child(3n + 3) {
       background-color: $color__blue;
     }
   }
