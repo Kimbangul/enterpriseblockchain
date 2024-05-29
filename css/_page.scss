@@ -52,9 +52,12 @@ body.--invert {
       height: calc(100% - 0.6rem);
       background: $color__white;
     }
-    $gradient: linear-gradient(45deg, #ee5787 55%, #{$color__blue} 140%), linear-gradient(45deg, #ee5787 30%, #{$color__blue} 120%),
-      linear-gradient(45deg, #ee5787 10%, #{$color__blue} 100%), linear-gradient(45deg, #ee5787 5%, #{$color__blue} 70%, #43cf2e 160%),
-      linear-gradient(45deg, #ee5787 5%, #{$color__blue} 50%, #43cf2e 140%), linear-gradient(45deg, #ee5787 0%, #{$color__blue} 30%, #43cf2e 120%),
+    $gradient: linear-gradient(45deg, #ee5787 55%, #{$color__blue} 140%),
+      linear-gradient(45deg, #ee5787 30%, #{$color__blue} 120%),
+      linear-gradient(45deg, #ee5787 10%, #{$color__blue} 100%),
+      linear-gradient(45deg, #ee5787 5%, #{$color__blue} 70%, #43cf2e 160%),
+      linear-gradient(45deg, #ee5787 5%, #{$color__blue} 50%, #43cf2e 140%),
+      linear-gradient(45deg, #ee5787 0%, #{$color__blue} 30%, #43cf2e 120%),
       linear-gradient(45deg, #{$color__blue}, #43cf2e 85%);
 
     @for $i from 1 to 8 {
@@ -110,7 +113,8 @@ body.--invert {
     }
 
     &.line-rainbow {
-      background: linear-gradient(#000, #000), linear-gradient(315deg, #e657af, #0049ff, #43cf2e);
+      background: linear-gradient(#000, #000),
+        linear-gradient(315deg, #e657af, #0049ff, #43cf2e);
       padding: 0;
       border: 2px solid transparent;
       background-origin: border-box;
@@ -253,7 +257,12 @@ body.--invert {
     }
   }
   &__text {
-    background-image: linear-gradient(90deg, #{$color__green}, #{$color__blue}, #{$color__pink});
+    background-image: linear-gradient(
+      90deg,
+      #{$color__green},
+      #{$color__blue},
+      #{$color__pink}
+    );
     background-size: cover;
     -webkit-background-clip: text;
     background-clip: text;

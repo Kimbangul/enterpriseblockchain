@@ -148,29 +148,30 @@ const animation = {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: el,
-          scrub: 1.5,
-          end: 'bottom bottom',
+          scrub: true,
+          end: () => `bottom bottom`,
         },
       });
       const tl2 = gsap.timeline({
         scrollTrigger: {
           trigger: el,
-          scrub: 2,
+          scrub: true,
           start: 'top center',
-          end: 'bottom top',
+          end: () => `+=${el.offsetHeight * 3} bottom`,
+          markers: true,
         },
       });
 
       tl.to(
         splitLine.lines[0],
         {
-          xPercent: -70,
+          xPercent: -100,
         },
         'text'
       ).to(
         splitLine.lines[2],
         {
-          xPercent: 70,
+          xPercent: 100,
         },
         'text'
       );
