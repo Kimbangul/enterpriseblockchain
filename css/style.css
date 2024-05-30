@@ -483,9 +483,9 @@ body.--invert .text-section {
 }
 .card__sub-title {
   display: flex;
-  justify-content: space-between;
+  justify-content: stretch;
   align-items: center;
-  gap: 0;
+  gap: 0.8rem;
   flex-direction: row;
   font-size: 1.6rem;
   font-weight: 800;
@@ -494,10 +494,14 @@ body.--invert .text-section {
 .card__sub-title::after {
   content: "";
   display: block;
+  position: absolute;
   width: 4rem;
   height: 4rem;
   background: url("/assets/images/contract_icon.png");
   background-size: contain;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
 }
 .card__rainbow-text, .rainbow-box__text {
   background-image: linear-gradient(90deg, #00bf41, #0049ff, #e657af);
@@ -835,6 +839,10 @@ body.--invert .text-section {
   flex-shrink: 0;
 }
 
+[data-section="7"] {
+  flex-direction: column;
+}
+
 .data-id {
   padding: 2.4rem 0;
 }
@@ -958,6 +966,9 @@ body.--invert .text-section {
           backdrop-filter: blur(2rem);
 }
 
+.service-info .card__item:not(.rainbow-box), .service-info .rainbow-box:not(.rainbow-box) {
+  position: absolute;
+}
 .service-info__content {
   width: calc(100% - 30.4rem);
   margin-right: 0;
@@ -966,7 +977,7 @@ body.--invert .text-section {
   margin-top: 9.6rem;
   color: #fff;
 }
-.service-info__content:nth-child(2) {
+.service-info__content:first-child {
   margin-top: 0;
 }
 .service-info__content-desc {
@@ -985,6 +996,9 @@ body.--invert .text-section {
 }
 .service-info__item:first-child {
   margin-top: 0;
+}
+.service-info__item .text-section__desc {
+  margin-left: 0;
 }
 
 .service__list {

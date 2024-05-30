@@ -201,7 +201,7 @@ const animation = {
     const padding = parseInt(innerStyle.paddingLeft);
 
     const section = document.querySelector("[data-section='7']");
-    const cards = section.querySelectorAll('.card__item:not(last-child)');
+    const cards = section.querySelectorAll('.card__item');
     // data id, service 영역
     const scroller = section.querySelector('.scroller-section__scroller');
     const cardRainbow = document.querySelector('.card__item.line-rainbow');
@@ -213,7 +213,8 @@ const animation = {
         pin: true,
         yoyo: true,
         scrub: true,
-        end: `+=${scroller.offsetWidth}`,
+        end: `+=${scroller.offsetWidth * 4}`,
+        markers: true,
       },
     });
     tl.to(
@@ -229,9 +230,9 @@ const animation = {
       tl.to(
         el,
         {
-          x: cardListWidth - el.offsetLeft,
+          x: cardListWidth - el.offsetLeft - 8,
         },
-        'scroll-card'
+        'scroll-card+=0.06'
       );
     });
     tl.fromTo(
@@ -243,7 +244,7 @@ const animation = {
       {
         opacity: 1,
       },
-      'scroll-card'
+      '<+0.5'
     )
       .fromTo(
         "[data-icon='unlock']",
@@ -255,9 +256,20 @@ const animation = {
         },
         'scroll-card'
       )
-      .to("[data-icon='lock']", {
-        opacity: 0,
-      })
+      .to(
+        "[data-icon='lock']",
+        {
+          opacity: 0,
+        },
+        'lock'
+      )
+      .to(
+        section.querySelectorAll('.card__item:not(.line-rainbow)'),
+        {
+          opacity: 0,
+        },
+        'lock'
+      )
       .fromTo(
         section.querySelector('.card__rainbow-text'),
         {
@@ -266,6 +278,103 @@ const animation = {
         { opacity: 1 }
       );
     // 카드 애니메이션 끝
+
+    // 수직 스크롤 애니메이션 시작
+    const section1 = document.querySelector("[data-section='7-1']");
+    const section2 = document.querySelector("[data-section='7-2']");
+    // const scroll = section1.offsetHeight + section2.offsetHeight;
+    // tl.to(
+    //   section1,
+    //   {
+    //     //y: -section1.offsetHeight - cardRainbow.offsetHeight,
+    //     // yPercent: -200,
+    //     y: -scroll,
+    //     ease: 'none',
+    //   },
+    //   'section-scroll'
+    // ).to(
+    //   section2,
+    //   {
+    //     y: -scroll,
+    //     ease: 'none',
+    //   },
+    //   'section-scroll'
+    // );
+
+    // 수직 스크롤 애니메이션 끝
+    // 두번째 카드 애니메이션 시작
+
+    // tl.from(
+    //   section2.querySelector('.line-rainbow'),
+    //   {
+    //     opacity: 0,
+    //   },
+    //   'card-change'
+    // );
+    // .to(
+    //   cardRainbow,
+    //   {
+    //     opacity: 0,
+    //   }
+
+    //   // 'scroll-card'
+    // );
+
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: section2,
+        pin: true,
+        pinnedContainer: section2,
+        yoyo: true,
+        scrub: true,
+        start: 'center center',
+        end: `+=${section2.querySelector('.card__list').offsetWidth * 4}`,
+        markers: true,
+      },
+    });
+    tl2
+      .from(
+        section2.querySelector('.line-rainbow'),
+        {
+          opacity: 0,
+        },
+        'card-change'
+      )
+      .to(
+        cardRainbow,
+        {
+          opacity: 0,
+        },
+        'scroll-card'
+      );
+
+    const cardListWidth2 = section2.querySelector('.card__list').offsetWidth;
+    const cards2 = section2.querySelectorAll('.card__item');
+    cards2.forEach((el) => {
+      tl2.to(
+        el,
+        {
+          x: -el.offsetLeft - 8,
+        },
+        'card-move'
+      );
+    });
+    // // 두번째 카드 애니메이션
+  },
+  setService2: () => {
+    // 카드 애니메이션 시작
+    // const tl = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: "[data-section='7']",
+    //     pin: true,
+    //     yoyo: true,
+    //     scrub: true,
+    //     end: () => `+=100`,
+    //     // endTrigger: "[data-section='8']",
+    //     //end: `+=${scroller.offsetWidth * 4}`,
+    //     markers: true,
+    //   },
+    // });
   },
   setTextSplit: (textSpliterSelector) => {
     const textSpliter = document.querySelector(textSpliterSelector);
@@ -408,7 +517,8 @@ const registAnimation = () => {
   animation.setTalent();
   animation.setHorizonScroller("[data-section='5']");
   animation.setColorChip();
-  animation.setService();
+  //animation.setService();
+  //animation.setService2();
   //animation.setHorizonScroller("[data-section='7']");
 
   // TODO 7-1 추가예정
