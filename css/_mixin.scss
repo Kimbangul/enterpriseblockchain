@@ -60,3 +60,19 @@
   top: 0;
   left: 0;
 }
+
+@mixin util__card-blur-bg($url) {
+  &::after {
+    @include util__card-bg;
+    background-image: url(#{$url});
+    z-index: 2;
+    border-radius: 2rem;
+    filter: blur(4rem);
+  }
+  &::before {
+    @include util__card-bg;
+    z-index: 1;
+    background: hsla(0, 0%, 42%, 0.5);
+    background-blend-mode: multiply;
+  }
+}

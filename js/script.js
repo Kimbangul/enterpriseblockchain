@@ -22,12 +22,8 @@ const animation = {
     ScrollTrigger.create({
       trigger: '.data-id',
       endTrigger: ".sc[data-section='8']",
-      // end: 'bottom top',
-      //end: 'top top',
       start: 'top top',
-      //end: 'top top',
       toggleClass: { targets: 'body', className: '--invert' },
-      //markers: true,
     });
 
     ScrollTrigger.create({
@@ -292,6 +288,5 @@ const registAnimation = () => {
 (function () {
   // 로드 후 즉시 실행
   console.log('load');
-  // window.addEventListener('scroll', setHeaderPosition);
-  registAnimation();
+  // registAnimation();
 })();
