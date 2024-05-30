@@ -54,6 +54,7 @@ body {
   font-family: "Archivo", "Noto Sans KR", sans-serif;
   line-height: 1.33;
   word-break: keep-all;
+  position: relative;
   transition: background 0.3s;
 }
 
@@ -1124,6 +1125,10 @@ body.--invert .text-section {
   width: 5rem;
   height: 5rem;
   background: rgb(17, 17, 17);
+  position: absolute;
+  right: 10rem;
+  bottom: 26rem;
+  cursor: pointer;
 }
 .top-btn img {
   transform: rotate(180deg);

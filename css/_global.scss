@@ -36,6 +36,7 @@ body {
   font-family: $font__archivo;
   line-height: $size__line-height;
   word-break: keep-all;
+  position: relative;
   transition: background 0.3s;
 }
 input,

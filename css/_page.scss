@@ -788,7 +788,10 @@ body.--invert {
   width: 5rem;
   height: 5rem;
   background: rgb(17, 17, 17);
-
+  position: absolute;
+  right: 10rem;
+  bottom: 26rem;
+  cursor: pointer;
   img {
     transform: rotate(180deg);
   }
