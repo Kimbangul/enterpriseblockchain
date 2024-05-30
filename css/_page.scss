@@ -236,7 +236,7 @@ body.--invert {
       }
     }
   }
-  &__text {
+  &__rainbow-text {
     background-image: linear-gradient(
       90deg,
       #{$color__green},
@@ -261,7 +261,7 @@ body.--invert {
   height: 16.6rem;
 
   &__text {
-    @extend .card__text;
+    @extend .card__rainbow-text;
     text-align: center;
     text-transform: uppercase;
     font-size: 2.4rem;
@@ -642,6 +642,7 @@ body.--invert {
     margin-left: auto;
     padding-left: 12rem;
     margin-top: 9.6rem;
+    color: $color__white;
 
     &:nth-child(2) {
       margin-top: 0;

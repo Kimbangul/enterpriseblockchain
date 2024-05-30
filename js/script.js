@@ -195,11 +195,18 @@ const animation = {
       });
   },
   setService: () => {
+    const innerStyle = window.getComputedStyle(
+      document.querySelector('.header__inner')
+    );
+    const padding = parseInt(innerStyle.paddingLeft);
+
     const section = document.querySelector("[data-section='7']");
+    const cards = section.querySelectorAll('.card__item:not(last-child)');
     // data id, service 영역
     const scroller = section.querySelector('.scroller-section__scroller');
-    const title = section.querySelector('.sc__title');
     const cardRainbow = document.querySelector('.card__item.line-rainbow');
+
+    // 카드 애니메이션 시작
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "[data-section='7']",
@@ -209,13 +216,56 @@ const animation = {
         end: `+=${scroller.offsetWidth}`,
       },
     });
-
-    //    console.log(title.offsetWidth);
-    tl.to(scroller, {
-      xPercent: -100,
-      // x: '100vw',
-      x: cardRainbow.offsetWidth,
+    tl.to(
+      scroller,
+      {
+        xPercent: -100,
+        x: cardRainbow.offsetWidth - padding,
+      },
+      'scroll-card'
+    );
+    const cardListWidth = section.querySelector('.card__list').offsetWidth;
+    cards.forEach((el) => {
+      tl.to(
+        el,
+        {
+          x: cardListWidth - el.offsetLeft,
+        },
+        'scroll-card'
+      );
     });
+    tl.fromTo(
+      "[data-icon='lock']",
+      {
+        opacity: 0,
+        delay: 0.5,
+      },
+      {
+        opacity: 1,
+      },
+      'scroll-card'
+    )
+      .fromTo(
+        "[data-icon='unlock']",
+        {
+          opacity: 1,
+        },
+        {
+          opacity: 0,
+        },
+        'scroll-card'
+      )
+      .to("[data-icon='lock']", {
+        opacity: 0,
+      })
+      .fromTo(
+        section.querySelector('.card__rainbow-text'),
+        {
+          opacity: 0,
+        },
+        { opacity: 1 }
+      );
+    // 카드 애니메이션 끝
   },
   setTextSplit: (textSpliterSelector) => {
     const textSpliter = document.querySelector(textSpliterSelector);
