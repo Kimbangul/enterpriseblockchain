@@ -134,6 +134,12 @@ body.--invert {
         }
       }
     }
+
+    @for $i from 1 to 5 {
+      &:nth-child(#{$i}) {
+        z-index: $i;
+      }
+    }
   }
   &__title {
     font-size: 3.6rem;
@@ -618,8 +624,7 @@ body.--invert {
       right: 0;
     }
   }
-  &::after {
-    content: '';
+  &__blur {
     display: block;
     width: 100%;
     height: 100%;

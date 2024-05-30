@@ -127,6 +127,51 @@ const animation = {
       }
     );
   },
+  setColorChip: () => {
+    const text = document.querySelector('.color-scroller__text');
+    const colorChips = document.querySelectorAll('.color-scroller__chip');
+    console.log(document.querySelector('.color-scroller::after'));
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.color-scroller',
+        yoyo: true,
+        scrub: true,
+        start: () => 'top bottom',
+        end: () => 'top top ',
+        markers: true,
+      },
+    });
+
+    tl.from(
+      colorChips[2],
+      {
+        xPercent: 100,
+      },
+      'colorchip'
+    )
+      .from(
+        colorChips[1],
+        {
+          xPercent: -100,
+        },
+        'colorchip'
+      )
+      .from(
+        colorChips[0],
+        {
+          xPercent: -100,
+        },
+        'colorchip'
+      )
+      .from('.color-scroller__blur', { opacity: 0 }, 'fadein')
+      .from(
+        text,
+        {
+          opacity: 0,
+        },
+        'fadein'
+      );
+  },
   setCreator: () => {
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -148,6 +193,24 @@ const animation = {
       .to('.creator__text-container, .creator .arrow-down', {
         opacity: 0,
       });
+  },
+  setService: () => {
+    const scroller = document.querySelector(
+      "[data-section='7'] .scroller-section__scroller"
+    );
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "[data-section='7']",
+        pin: true,
+        yoyo: true,
+        scrub: true,
+        end: `+=${scroller.offsetWidth}`,
+      },
+    });
+    tl.to(scroller, {
+      xPercent: -50,
+      // x: '100vw',
+    });
   },
   setTextSplit: (textSpliterSelector) => {
     const textSpliter = document.querySelector(textSpliterSelector);
@@ -289,8 +352,10 @@ const registAnimation = () => {
   animation.setTextSplit("[data-scroller='1']");
   animation.setTalent();
   animation.setHorizonScroller("[data-section='5']");
-  // TODO colorchip 추가예정
-  animation.setHorizonScroller("[data-section='7']");
+  animation.setColorChip();
+  animation.setService();
+  //animation.setHorizonScroller("[data-section='7']");
+
   // TODO 7-1 추가예정
   // TODO 7-2 추가예정
   animation.setTextSplit("[data-scroller='2']");
