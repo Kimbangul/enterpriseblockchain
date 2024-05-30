@@ -188,6 +188,7 @@ body.--invert .text-section {
   align-items: center;
   gap: 2.4rem;
   flex-direction: row;
+  position: relative;
 }
 .card__item, .rainbow-box {
   display: flex;
@@ -812,7 +813,7 @@ body.--invert .text-section {
 .scroller-section__title {
   font-weight: 800;
   flex-shrink: 0;
-  margin-right: 16rem;
+  padding-right: 16rem;
   transition: color 0.3s;
 }
 .scroller-section__scroller {

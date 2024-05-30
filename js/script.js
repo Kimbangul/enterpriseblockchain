@@ -195,9 +195,11 @@ const animation = {
       });
   },
   setService: () => {
-    const scroller = document.querySelector(
-      "[data-section='7'] .scroller-section__scroller"
-    );
+    const section = document.querySelector("[data-section='7']");
+    // data id, service 영역
+    const scroller = section.querySelector('.scroller-section__scroller');
+    const title = section.querySelector('.sc__title');
+    const cardRainbow = document.querySelector('.card__item.line-rainbow');
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "[data-section='7']",
@@ -207,9 +209,12 @@ const animation = {
         end: `+=${scroller.offsetWidth}`,
       },
     });
+
+    //    console.log(title.offsetWidth);
     tl.to(scroller, {
-      xPercent: -50,
+      xPercent: -100,
       // x: '100vw',
+      x: cardRainbow.offsetWidth,
     });
   },
   setTextSplit: (textSpliterSelector) => {

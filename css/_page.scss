@@ -78,6 +78,7 @@ body.--invert {
 .card {
   &__list {
     @include util__flex(stretch, center, 2.4rem);
+    position: relative;
   }
   &__item {
     @include util__flex(stretch, stretch, 0, column);
@@ -506,7 +507,7 @@ body.--invert {
   &__title {
     font-weight: 800;
     flex-shrink: 0;
-    margin-right: 16rem;
+    padding-right: 16rem;
     transition: color 0.3s;
   }
   &__scroller {
