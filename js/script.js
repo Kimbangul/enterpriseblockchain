@@ -3,38 +3,8 @@ const getPageViewport = () => {
 };
 
 const animation = {
-  setHeaderPosition: () => {
-    ScrollTrigger.create({
-      trigger: 'body',
-      start: window.innerHeight / 2,
-      toggleClass: { targets: '.header', className: 'header--show' },
-    });
-
-    // invert
-    ScrollTrigger.create({
-      trigger: ".sc[data-section='3']",
-      endTrigger: '.data-id',
-      start: 'top top',
-      end: 'top top',
-      toggleClass: { targets: '.header', className: 'header--invert' },
-    });
-
-    ScrollTrigger.create({
-      trigger: '.data-id',
-      endTrigger: ".sc[data-section='8']",
-      start: 'top top',
-      toggleClass: { targets: 'body', className: '--invert' },
-    });
-
-    ScrollTrigger.create({
-      trigger: ".sc[data-section='8']",
-      endTrigger: 'html',
-      start: 'top bottom',
-      end: 'bottom top',
-      toggleClass: { targets: '.header', className: 'header--invert' },
-    });
-  },
   setIntro: () => {
+    /** 1번째 섹션 애니메이션 */
     const introDesc = gsap.utils.toArray('.intro__desc');
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -64,6 +34,7 @@ const animation = {
     });
   },
   setMission: () => {
+    /** 2번째 섹션 애니메이션 */
     const splitLine = new SplitType('.mission__desc:first-child', {
       types: 'lines',
     });
@@ -133,62 +104,6 @@ const animation = {
       'out'
     );
   },
-  setTextScroller: () => {
-    const textScroller = gsap.utils.toArray('.text-section__scroller');
-    textScroller.forEach((el, idx) => {
-      const text = el.querySelector('.text-section__scroller-text');
-      const bgItem = el.querySelectorAll('.text-section__scroller-item');
-      const splitLine = new SplitType(text, {
-        types: 'lines',
-      });
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: el,
-          scrub: true,
-          end: () => `bottom bottom`,
-        },
-      });
-      const tl2 = gsap.timeline({
-        scrollTrigger: {
-          trigger: el,
-          scrub: true,
-          start: 'top center',
-          end: () => `+=${el.offsetHeight * 3} bottom`,
-          markers: true,
-        },
-      });
-
-      tl.to(
-        splitLine.lines[0],
-        {
-          xPercent: -100,
-        },
-        'text'
-      ).to(
-        splitLine.lines[2],
-        {
-          xPercent: 100,
-        },
-        'text'
-      );
-
-      tl2
-        .to(
-          bgItem[0],
-          {
-            width: '100%',
-          },
-          'text'
-        )
-        .to(
-          bgItem[1],
-          {
-            width: '100%',
-          },
-          'text'
-        );
-    });
-  },
   setTalent: () => {
     const scroller = document.querySelector('.talent__img-scroller');
     const tl = gsap.timeline({
@@ -196,9 +111,9 @@ const animation = {
         trigger: '.talent__inner',
         pin: true,
         yoyo: true,
-        scrub: 3,
+        scrub: true,
         start: 'top top',
-        end: `+=${scroller.offsetHeight * 2} center`,
+        end: () => `+=${scroller.offsetHeight * 4} center`,
       },
     });
 
@@ -212,27 +127,6 @@ const animation = {
       }
     );
   },
-  setHorizonScroller: () => {
-    const scrollerSection = gsap.utils.toArray('.scroller-section');
-    scrollerSection.forEach((el, idx) => {
-      const scroller = el.querySelector('.scroller-section__scroller');
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: el,
-          pin: true,
-          yoyo: true,
-          scrub: true,
-          end: `+=${scroller.offsetWidth}`,
-        },
-      });
-
-      tl.to(scroller, {
-        xPercent: -100,
-        x: '100vw',
-      });
-    });
-  },
   setCreator: () => {
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -241,17 +135,96 @@ const animation = {
         yoyo: true,
         scrub: true,
         start: 'top top',
-        //!SECTIONend: 'bottom bottom',
-        end: `+=${window.innerHeight * 2}`,
-        markers: true,
+        end: () => `+=${window.innerHeight * 2}`,
       },
     });
 
-    // tl.from('.creator__text-container', {
-    //   opacity: 0,
-    // }).from('.creator .arrow-down', {
-    //   opacity: 0,
-    // });
+    tl.from('.creator__text-container', {
+      opacity: 0,
+    })
+      .from('.creator .arrow-down', {
+        opacity: 0,
+      })
+      .to('.creator__text-container, .creator .arrow-down', {
+        opacity: 0,
+      });
+  },
+  setTextSplit: (textSpliterSelector) => {
+    const textSpliter = document.querySelector(textSpliterSelector);
+    console.log(textSpliter);
+
+    const text = textSpliter.querySelector('.text-section__spliter-text');
+    const bgItem = textSpliter.querySelectorAll('.text-section__spliter-item');
+    const splitLine = new SplitType(text, {
+      types: 'lines',
+    });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: textSpliter,
+        scrub: true,
+        start: 'top center',
+        end: () => `+=${textSpliter.offsetHeight * 2} bottom`,
+      },
+    });
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: textSpliter,
+        scrub: true,
+        start: 'top center',
+        end: () => `+=${textSpliter.offsetHeight * 3} bottom`,
+      },
+    });
+
+    tl.to(
+      splitLine.lines[0],
+      {
+        xPercent: -100,
+      },
+      'text'
+    ).to(
+      splitLine.lines[2],
+      {
+        xPercent: 100,
+      },
+      'text'
+    );
+
+    tl2
+      .to(
+        bgItem[0],
+        {
+          width: '100%',
+        },
+        'text'
+      )
+      .to(
+        bgItem[1],
+        {
+          width: '100%',
+        },
+        'text'
+      );
+  },
+  setHorizonScroller: (scollerSectionSelector) => {
+    const scollerSection = document.querySelector(scollerSectionSelector);
+    const scroller = scollerSection.querySelector(
+      '.scroller-section__scroller'
+    );
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: scollerSection,
+        pin: true,
+        yoyo: true,
+        scrub: true,
+        end: `+=${scroller.offsetWidth}`,
+      },
+    });
+
+    tl.to(scroller, {
+      xPercent: -100,
+      x: '100vw',
+    });
   },
   setTicker: () => {
     ScrollTrigger.create({
@@ -268,19 +241,66 @@ const animation = {
       ease: 'none',
     });
   },
+  setHeaderPosition: () => {
+    ScrollTrigger.create({
+      trigger: 'body',
+      start: window.innerHeight / 2,
+      toggleClass: { targets: '.header', className: 'header--show' },
+    });
+
+    // invert
+    ScrollTrigger.create({
+      trigger: "[data-section='3']",
+      endTrigger: "[data-section='5']",
+      // endTrigger: 'html',
+      start: () => 'top top',
+      end: () => 'top top',
+      toggleClass: { targets: '.header', className: 'header--invert' },
+      markers: true,
+      startLabel: 'start header ',
+      endLabel: 'end header',
+    });
+
+    ScrollTrigger.create({
+      trigger: ".sc[data-section='8']",
+      endTrigger: 'html',
+      start: () => 'top bottom',
+      end: () => 'bottom top',
+      toggleClass: { targets: '.header', className: 'header--invert' },
+    });
+
+    // body
+    ScrollTrigger.create({
+      trigger: '.talent',
+      endTrigger: "[data-section='8']",
+      start: () => 'bottom top',
+      end: () => 'top top',
+      pinnedContainer: '.talent',
+      toggleClass: { targets: 'body', className: '--invert' },
+      markers: true,
+    });
+  },
 };
 
 // FUNCTION gsap 애니메이션 등록
 const registAnimation = () => {
   animation.setIntro();
   animation.setMission();
+  animation.setTextSplit("[data-scroller='1']");
   animation.setTalent();
-
-  animation.setHorizonScroller();
-  animation.setTextScroller();
+  animation.setHorizonScroller("[data-section='5']");
+  // TODO colorchip 추가예정
+  animation.setHorizonScroller("[data-section='7']");
+  // TODO 7-1 추가예정
+  // TODO 7-2 추가예정
+  animation.setTextSplit("[data-scroller='2']");
+  animation.setHorizonScroller("[data-section='9']");
   animation.setCreator();
-  animation.setHeaderPosition();
+  animation.setHorizonScroller("[data-section='10']");
+
   animation.setTicker();
+
+  animation.setHeaderPosition();
 
   // animation.setData();
 };
@@ -288,5 +308,5 @@ const registAnimation = () => {
 (function () {
   // 로드 후 즉시 실행
   console.log('load');
-  // registAnimation();
+  registAnimation();
 })();

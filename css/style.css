@@ -702,7 +702,7 @@ body.--invert .text-section {
   line-height: 1.6;
   margin-left: auto;
 }
-.text-section__scroller {
+.text-section__spliter {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -714,17 +714,17 @@ body.--invert .text-section {
   background-position: center;
   padding: 18rem 0;
 }
-.text-section__scroller[data-scroller="1"] {
+.text-section__spliter[data-scroller="1"] {
   background-image: url("/assets/images/text_scroller_01.jpg");
 }
-.text-section__scroller[data-scroller="2"] {
+.text-section__spliter[data-scroller="2"] {
   background-image: url("/assets/images/text_scroller_02.jpg");
 }
-.text-section__scroller-text {
+.text-section__spliter-text {
   text-align: center;
   color: #fff;
 }
-.text-section__scroller-item {
+.text-section__spliter-item {
   position: absolute;
   top: 0;
   right: 0;
@@ -733,7 +733,7 @@ body.--invert .text-section {
   height: 14rem;
   background: #fff;
 }
-.text-section__scroller-item:last-child {
+.text-section__spliter-item:last-child {
   top: unset;
   bottom: 0;
   left: 0;

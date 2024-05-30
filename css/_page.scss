@@ -418,7 +418,7 @@ body.--invert {
     line-height: $size__p-line-height;
     margin-left: auto;
   }
-  &__scroller {
+  &__spliter {
     @include util__flex(center, center);
     position: relative;
     height: 72rem;
