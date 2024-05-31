@@ -291,7 +291,7 @@ const animation = {
     // // 수직 스크롤 끝
     console.log(section2.querySelector('.line-rainbow--glow'));
     tl.fromTo(
-      section2.querySelector('.line-rainbow'),
+      section2.querySelector('.line-rainbow--glow'),
       {
         opacity: 0,
       },
@@ -403,13 +403,6 @@ const animation = {
       start: 'top bottom',
       end: 'bottom top',
       toggleClass: { targets: '.ticker', className: 'ticker--active' },
-    });
-
-    gsap.to('.ticker__inner', {
-      xPercent: -45,
-      repeat: -1,
-      duration: 5,
-      ease: 'none',
     });
   },
   setHeaderPosition: () => {
