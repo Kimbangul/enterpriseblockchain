@@ -966,8 +966,19 @@ body.--invert .text-section {
           backdrop-filter: blur(2rem);
 }
 
-.service-info .card__item:not(.rainbow-box), .service-info .rainbow-box:not(.rainbow-box) {
+.service-info__scroller {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0;
+  flex-direction: row;
+  position: relative;
+}
+.service-info__scroller .service-info__content {
   position: absolute;
+}
+.service-info__scroller .card__list {
+  height: 100vh;
 }
 .service-info__content {
   width: calc(100% - 30.4rem);
@@ -1001,6 +1012,9 @@ body.--invert .text-section {
   margin-left: 0;
 }
 
+.service .sc__inner {
+  height: auto;
+}
 .service__list {
   display: flex;
   justify-content: space-between;

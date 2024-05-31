@@ -363,18 +363,99 @@ const animation = {
   },
   setService2: () => {
     // 카드 애니메이션 시작
-    // const tl = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: "[data-section='7']",
-    //     pin: true,
-    //     yoyo: true,
-    //     scrub: true,
-    //     end: () => `+=100`,
-    //     // endTrigger: "[data-section='8']",
-    //     //end: `+=${scroller.offsetWidth * 4}`,
-    //     markers: true,
-    //   },
-    // });
+    const section = document.querySelector("[data-section='7-0']");
+    const scroller = section.querySelector('.scroller-section__scroller');
+
+    const cards = section.querySelectorAll('.card__item');
+    const title = section.querySelector('.sc__title');
+    const cardRainbow = document.querySelector('.card__item.line-rainbow');
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        pin: true,
+        yoyo: true,
+        scrub: true,
+        end: `+=${scroller.offsetWidth * 3}`,
+        markers: true,
+      },
+    });
+
+    // 카드 이동
+    tl.to(scroller, {
+      // xPercent: -100,
+      // x: '100vw',
+      x: -title.offsetWidth,
+    });
+
+    const cardListWidth = section.querySelector('.card__list').offsetWidth;
+    cards.forEach((el) => {
+      tl.to(
+        el,
+        {
+          x: -el.offsetLeft,
+        },
+        'card-move'
+      );
+    });
+
+    // 카드 이동 끝
+    // 카드 이미지 변경
+    tl.fromTo(
+      "[data-icon='lock']",
+      {
+        opacity: 0,
+        delay: 0.5,
+      },
+      {
+        opacity: 1,
+      },
+      '<+0.5'
+    )
+      .fromTo(
+        "[data-icon='unlock']",
+        {
+          opacity: 1,
+        },
+        {
+          opacity: 0,
+        },
+        'scroll-card'
+      )
+      .to(
+        "[data-icon='lock']",
+        {
+          opacity: 0,
+        },
+        'lock'
+      )
+      .to(
+        section.querySelectorAll('.card__item:not(.line-rainbow)'),
+        {
+          opacity: 0,
+        },
+        'lock'
+      )
+      .fromTo(
+        section.querySelector('.card__rainbow-text'),
+        {
+          opacity: 0,
+        },
+        { opacity: 1 }
+      );
+    // // 카드 이미지 변경 끝
+
+    const section1 = document.querySelector("[data-section='7-1']");
+    const section2 = document.querySelector("[data-section='7-2']");
+    const scroller2 = document.querySelector('.service__scroller');
+
+    tl.to(
+      scroller2,
+      {
+        yPercent: -200,
+      },
+      'scroll'
+    );
   },
   setTextSplit: (textSpliterSelector) => {
     const textSpliter = document.querySelector(textSpliterSelector);
@@ -518,7 +599,7 @@ const registAnimation = () => {
   animation.setHorizonScroller("[data-section='5']");
   animation.setColorChip();
   //animation.setService();
-  //animation.setService2();
+  animation.setService2();
   //animation.setHorizonScroller("[data-section='7']");
 
   // TODO 7-1 추가예정
