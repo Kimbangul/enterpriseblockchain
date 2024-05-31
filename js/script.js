@@ -1,7 +1,21 @@
-const getPageViewport = () => {
-  return window.innerHeight;
+//FUNCTION 스크롤 방향에 따른 top btn 숨김처리
+const getTopBtnPosition = () =>
+  document.body.offsetHeight - window.innerHeight - 260;
+
+let prevScroll = window.scrollY;
+const topBtn = document.querySelector('.top-btn');
+const setTopBtnVisible = () => {
+  let currentScroll = window.scrollY;
+
+  if (prevScroll < currentScroll && currentScroll < getTopBtnPosition()) {
+    topBtn.classList.add('top-btn--hidden');
+  } else {
+    topBtn.classList.remove('top-btn--hidden');
+  }
+  prevScroll = currentScroll;
 };
 
+// PARAM gsap animation
 const animation = {
   setIntro: () => {
     /** 1번째 섹션 애니메이션 */
@@ -12,7 +26,7 @@ const animation = {
         pin: true,
         yoyo: true,
         scrub: true,
-        end: `+=${(introDesc.length + 1) * window.innerHeight}`,
+        end: () => `+=${(introDesc.length + 1) * window.innerHeight}`,
       },
     });
     const tl2 = gsap.timeline({
@@ -21,7 +35,7 @@ const animation = {
         yoyo: true,
         scrub: true,
         start: 0,
-        end: `+=${window.innerHeight / 2}`,
+        end: () => `+=${window.innerHeight / 2}`,
       },
     });
 
@@ -43,7 +57,7 @@ const animation = {
         trigger: '.mission',
         pin: true,
         scrub: true,
-        end: `+=${window.innerHeight * 5}`,
+        end: () => `+=${window.innerHeight * 5}`,
       },
     });
 
@@ -112,7 +126,7 @@ const animation = {
         pin: true,
         yoyo: true,
         scrub: true,
-        start: 'top top',
+        start: () => 'top top',
         end: () => `+=${scroller.offsetHeight * 4} center`,
       },
     });
@@ -177,7 +191,7 @@ const animation = {
         pin: true,
         yoyo: true,
         scrub: true,
-        start: 'top top',
+        start: () => 'top top',
         end: () => `+=${window.innerHeight * 2}`,
       },
     });
@@ -195,11 +209,8 @@ const animation = {
   setService2: () => {
     // 카드 애니메이션 시작
     const section = document.querySelector("[data-section='7-0']");
-    const section1 = document.querySelector("[data-section='7-1']");
     const section2 = document.querySelector("[data-section='7-2']");
-
     const scroller = section.querySelector('.scroller-section__scroller');
-
     const cards = section.querySelectorAll('.card__item');
     const title = section.querySelector('.sc__title');
     const cardRainbow = document.querySelector('.card__item.line-rainbow');
@@ -210,8 +221,7 @@ const animation = {
         pin: true,
         yoyo: true,
         scrub: true,
-        end: `+=${scroller.offsetWidth * 5}`,
-        markers: true,
+        end: () => `+=${scroller.offsetWidth * 5}`,
         ease: 'none',
       },
     });
@@ -289,7 +299,6 @@ const animation = {
     );
 
     // // 수직 스크롤 끝
-    console.log(section2.querySelector('.line-rainbow--glow'));
     tl.fromTo(
       section2.querySelector('.line-rainbow--glow'),
       {
@@ -322,6 +331,7 @@ const animation = {
       );
   },
   setTextSplit: (textSpliterSelector) => {
+    /** text line을 양 끝단으로 이동 */
     const textSpliter = document.querySelector(textSpliterSelector);
 
     const text = textSpliter.querySelector('.text-section__spliter-text');
@@ -333,7 +343,7 @@ const animation = {
       scrollTrigger: {
         trigger: textSpliter,
         scrub: true,
-        start: 'top center',
+        start: () => 'top center',
         end: () => `+=${textSpliter.offsetHeight * 2} bottom`,
       },
     });
@@ -341,7 +351,7 @@ const animation = {
       scrollTrigger: {
         trigger: textSpliter,
         scrub: true,
-        start: 'top center',
+        start: () => 'top center',
         end: () => `+=${textSpliter.offsetHeight * 3} bottom`,
       },
     });
@@ -377,6 +387,7 @@ const animation = {
       );
   },
   setHorizonScroller: (scollerSectionSelector) => {
+    /** 수평 스크롤 */
     const scollerSection = document.querySelector(scollerSectionSelector);
     const scroller = scollerSection.querySelector(
       '.scroller-section__scroller'
@@ -388,7 +399,7 @@ const animation = {
         pin: true,
         yoyo: true,
         scrub: true,
-        end: `+=${scroller.offsetWidth}`,
+        end: () => `+=${scroller.offsetWidth}`,
       },
     });
 
@@ -397,18 +408,20 @@ const animation = {
       x: '100vw',
     });
   },
+  /** ticker position 애니메이션 */
   setTicker: () => {
     ScrollTrigger.create({
       trigger: '.footer',
-      start: 'top bottom',
-      end: 'bottom top',
+      start: () => 'top bottom',
+      end: () => 'bottom top',
       toggleClass: { targets: '.ticker', className: 'ticker--active' },
     });
   },
+  // header color, position 애니메이션
   setHeaderPosition: () => {
     ScrollTrigger.create({
       trigger: 'body',
-      start: window.innerHeight / 2,
+      start: () => window.innerHeight / 2,
       toggleClass: { targets: '.header', className: 'header--show' },
     });
 
@@ -416,17 +429,14 @@ const animation = {
     ScrollTrigger.create({
       trigger: "[data-section='3']",
       endTrigger: "[data-section='5']",
-      // endTrigger: 'html',
       start: () => 'top top',
       end: () => 'top top',
       toggleClass: { targets: '.header', className: 'header--invert' },
-      startLabel: 'start header ',
-      endLabel: 'end header',
     });
 
     ScrollTrigger.create({
-      trigger: ".sc[data-section='8']",
-      endTrigger: 'html',
+      trigger: "[data-section='8']",
+      endTrigger: '.footer',
       start: () => 'top bottom',
       end: () => 'bottom top',
       toggleClass: { targets: '.header', className: 'header--invert' },
@@ -437,9 +447,18 @@ const animation = {
       trigger: '.talent',
       endTrigger: "[data-section='8']",
       start: () => 'bottom top',
-      end: () => 'top top',
+      end: () => 'top bottom',
       pinnedContainer: '.talent',
       toggleClass: { targets: 'body', className: '--invert' },
+    });
+  },
+  /** top button 애니메이션 */
+  setTopBtnPosition: () => {
+    ScrollTrigger.create({
+      trigger: '.mission',
+      start: () => 'top top',
+      end: () => `+=${getTopBtnPosition()} bottom`,
+      toggleClass: { targets: topBtn, className: 'top-btn--fixed' },
     });
   },
 };
@@ -452,26 +471,17 @@ const registAnimation = () => {
   animation.setTalent();
   animation.setHorizonScroller("[data-section='5']");
   animation.setColorChip();
-  //animation.setService();
   animation.setService2();
-  //animation.setHorizonScroller("[data-section='7']");
-
-  // TODO 7-1 추가예정
-  // TODO 7-2 추가예정
   animation.setTextSplit("[data-scroller='2']");
   animation.setHorizonScroller("[data-section='9']");
   animation.setCreator();
   animation.setHorizonScroller("[data-section='10']");
-
   animation.setTicker();
-
   animation.setHeaderPosition();
-
-  // animation.setData();
+  animation.setTopBtnPosition();
 };
 
 (function () {
-  // 로드 후 즉시 실행
-  console.log('load');
   registAnimation();
+  window.addEventListener('scroll', debounce(setTopBtnVisible, 100));
 })();
