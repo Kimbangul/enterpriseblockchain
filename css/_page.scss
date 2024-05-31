@@ -120,6 +120,12 @@ body.--invert {
       border: 2px solid transparent;
       background-origin: border-box;
       background-clip: content-box, border-box;
+
+      &--glow {
+        @extend .card, .line-rainbow;
+        position: relative;
+        overflow: visible;
+      }
     }
 
     &.blur {
@@ -134,6 +140,21 @@ body.--invert {
           @include util__card-blur-bg('/assets/images/card_bg_0#{$i}.png');
         }
       }
+    }
+
+    &-glow-bg {
+      z-index: -1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      display: block;
+      width: 160%;
+      height: 160%;
+      background-image: url('/assets/images/card_glow.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0;
     }
 
     @for $i from 1 to 5 {
@@ -656,7 +677,8 @@ body.--invert {
 
 .service-info {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
+  // bottom: 50%;
   &__scroller {
     @include util__flex;
     position: relative;
@@ -674,25 +696,6 @@ body.--invert {
     @for $i from 1 to 5 {
       .card__item:nth-child(#{$i}) {
         z-index: #{4 - $i};
-      }
-    }
-
-    .line-rainbow {
-      position: relative;
-      overflow: visible;
-      &::before {
-        content: '';
-        z-index: -1;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        display: block;
-        width: 160%;
-        height: 160%;
-        background-image: url('/assets/images/card_glow.png');
-        background-size: contain;
-        background-repeat: no-repeat;
       }
     }
   }
@@ -726,6 +729,12 @@ body.--invert {
   }
 }
 .service {
+  min-height: 100vh;
+  overflow: visible;
+  .scroller-section {
+    position: absolute;
+    top: 0;
+  }
   .sc__inner {
     height: auto;
   }

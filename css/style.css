@@ -220,12 +220,16 @@ body.--invert .text-section {
   border: 0.2rem solid #fff;
   background: #000;
 }
-.card__item.line-rainbow, .rainbow-box {
+.card__item.line-rainbow, .card__item.rainbow-box, .rainbow-box, .card__item.line-rainbow--glow, .line-rainbow--glow.rainbow-box {
   background: linear-gradient(#000, #000), linear-gradient(315deg, #e657af, #0049ff, #43cf2e);
   padding: 0;
   border: 2px solid transparent;
   background-origin: border-box;
   background-clip: content-box, border-box;
+}
+.card__item.line-rainbow--glow, .line-rainbow--glow.rainbow-box {
+  position: relative;
+  overflow: visible;
 }
 .card__item.blur, .blur.rainbow-box {
   position: relative;
@@ -379,6 +383,20 @@ body.--invert .text-section {
   z-index: 1;
   background: hsla(0, 0%, 42%, 0.5);
   background-blend-mode: multiply;
+}
+.card__item-glow-bg {
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: block;
+  width: 160%;
+  height: 160%;
+  background-image: url("/assets/images/card_glow.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
 }
 .card__item:nth-child(1), .rainbow-box:nth-child(1) {
   z-index: 1;
@@ -976,7 +994,7 @@ body.--invert .text-section {
 
 .service-info {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
 }
 .service-info__scroller {
   display: flex;
@@ -1007,24 +1025,6 @@ body.--invert .text-section {
 }
 .service-info__scroller .card__item:nth-child(4), .service-info__scroller .rainbow-box:nth-child(4) {
   z-index: 0;
-}
-.service-info__scroller .line-rainbow, .service-info__scroller .rainbow-box {
-  position: relative;
-  overflow: visible;
-}
-.service-info__scroller .line-rainbow::before, .service-info__scroller .rainbow-box::before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  display: block;
-  width: 160%;
-  height: 160%;
-  background-image: url("/assets/images/card_glow.png");
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 .service-info__content {
   width: calc(100% - 30.4rem);
@@ -1058,6 +1058,14 @@ body.--invert .text-section {
   margin-left: 0;
 }
 
+.service {
+  min-height: 100vh;
+  overflow: visible;
+}
+.service .scroller-section {
+  position: absolute;
+  top: 0;
+}
 .service .sc__inner {
   height: auto;
 }

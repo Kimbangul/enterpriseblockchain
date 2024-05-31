@@ -130,7 +130,6 @@ const animation = {
   setColorChip: () => {
     const text = document.querySelector('.color-scroller__text');
     const colorChips = document.querySelectorAll('.color-scroller__chip');
-    console.log(document.querySelector('.color-scroller::after'));
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.color-scroller',
@@ -206,14 +205,14 @@ const animation = {
     const cardRainbow = document.querySelector('.card__item.line-rainbow');
 
     const tl = gsap.timeline({
-      ease: 'none',
       scrollTrigger: {
-        trigger: section,
+        trigger: document.querySelector("[data-section='7']"),
         pin: true,
         yoyo: true,
         scrub: true,
-        end: `+=${scroller.offsetWidth * 2} top`,
+        end: `+=${scroller.offsetWidth * 5}`,
         markers: true,
+        ease: 'none',
       },
     });
 
@@ -275,46 +274,55 @@ const animation = {
     // // 카드 이미지 변경 끝
 
     // 수직 스크롤 시작
-    const horizonTl = gsap.timeline({
-      // paused: true,
-    });
     const scroller2 = document.querySelector('.service-info');
     const cards2 = section2.querySelectorAll('.card__item');
 
-    horizonTl.from(
+    tl.fromTo(
       scroller2,
       {
-        y: scroller2.offsetHeight,
+        yPercent: 100,
+      },
+      {
+        yPercent: 0,
       },
       'scroll'
     );
 
     // // 수직 스크롤 끝
+    console.log(section2.querySelector('.line-rainbow--glow'));
+    tl.fromTo(
+      section2.querySelector('.line-rainbow'),
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+      },
+      'scroll+=0.7'
+    );
 
     // 카드 이동 시작
-    const outroTl = gsap.timeline({
-      // paused: true,
-    });
     cards2.forEach((el) => {
-      outroTl.to(el, {
-        x: -el.offsetLeft,
-      });
+      tl.to(
+        el,
+        {
+          x: -el.offsetLeft,
+        },
+        'scroll+=1'
+      );
     });
     // // 카드 이동 끝
 
-    outroTl
-      .from(section2.querySelector('.line-rainbow'), {
-        opacity: 0,
-      })
-      .from(section2.querySelector('.service-info__content'), { opacity: 0 })
-      .to(cardRainbow, { opacity: 0 });
-
-    // 타임라인 합산
-    tl.addLabel('horizon').add(horizonTl).addLabel('outro').add(outroTl);
+    tl.to(section2.querySelector('.card__item-glow-bg'), { opacity: 1 }, 'glow')
+      .to(cardRainbow, { opacity: 0 }, 'glow')
+      .from(
+        section2.querySelector('.service-info__content'),
+        { opacity: 0 },
+        'glow'
+      );
   },
   setTextSplit: (textSpliterSelector) => {
     const textSpliter = document.querySelector(textSpliterSelector);
-    console.log(textSpliter);
 
     const text = textSpliter.querySelector('.text-section__spliter-text');
     const bgItem = textSpliter.querySelectorAll('.text-section__spliter-item');
