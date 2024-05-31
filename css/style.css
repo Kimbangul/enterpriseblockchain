@@ -457,6 +457,8 @@ body.--invert .text-section {
 .card__img-container {
   height: 100%;
   position: relative;
+  background: #000;
+  border-radius: inherit;
 }
 .card__img-icon {
   width: 15rem;
@@ -480,6 +482,12 @@ body.--invert .text-section {
   height: 3.6rem;
   border-radius: 100%;
   background: #ff009d;
+}
+.card__account-profile.blue {
+  background: #0049ff;
+}
+.card__account-profile.green {
+  background: #26ff00;
 }
 .card__sub-title {
   display: flex;
@@ -966,6 +974,10 @@ body.--invert .text-section {
           backdrop-filter: blur(2rem);
 }
 
+.service-info {
+  position: absolute;
+  bottom: 0px;
+}
 .service-info__scroller {
   display: flex;
   justify-content: flex-start;
@@ -998,9 +1010,9 @@ body.--invert .text-section {
 }
 .service-info__scroller .line-rainbow, .service-info__scroller .rainbow-box {
   position: relative;
-  background: #000;
+  overflow: visible;
 }
-.service-info__scroller .line-rainbow::after, .service-info__scroller .rainbow-box::after {
+.service-info__scroller .line-rainbow::before, .service-info__scroller .rainbow-box::before {
   content: "";
   z-index: -1;
   position: absolute;
