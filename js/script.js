@@ -364,6 +364,9 @@ const animation = {
   setService2: () => {
     // 카드 애니메이션 시작
     const section = document.querySelector("[data-section='7-0']");
+    const section1 = document.querySelector("[data-section='7-1']");
+    const section2 = document.querySelector("[data-section='7-2']");
+
     const scroller = section.querySelector('.scroller-section__scroller');
 
     const cards = section.querySelectorAll('.card__item');
@@ -376,7 +379,10 @@ const animation = {
         pin: true,
         yoyo: true,
         scrub: true,
-        end: `+=${scroller.offsetWidth * 3}`,
+        end: `+=${
+          scroller.offsetWidth * 4 +
+          document.querySelector("[data-section='7']").offsetHeight
+        }`,
         markers: true,
       },
     });
@@ -445,17 +451,41 @@ const animation = {
       );
     // // 카드 이미지 변경 끝
 
-    const section1 = document.querySelector("[data-section='7-1']");
-    const section2 = document.querySelector("[data-section='7-2']");
-    const scroller2 = document.querySelector('.service__scroller');
+    // 수직 스크롤 시작
+
+    const scroller2 = document.querySelector('.service-info');
+    const cards2 = section2.querySelectorAll('.card__item');
 
     tl.to(
       scroller2,
       {
-        yPercent: -200,
+        y: -section1.offsetHeight,
       },
       'scroll'
-    );
+    )
+      .from(
+        section2.querySelector('.line-rainbow'),
+        {
+          opacity: 0,
+        },
+        '>200'
+      )
+      .to(cardRainbow, { opacity: 0 });
+    // // 수직 스크롤 끝
+
+    // 카드 이동 시작
+    cards2.forEach((el) => {
+      tl.to(
+        el,
+        {
+          x: -el.offsetLeft,
+        },
+        'card-move2'
+      );
+    });
+    // // 카드 이동 끝
+
+    tl.from(section2.querySelector('.service-info__content'), { opacity: 0 });
   },
   setTextSplit: (textSpliterSelector) => {
     const textSpliter = document.querySelector(textSpliterSelector);

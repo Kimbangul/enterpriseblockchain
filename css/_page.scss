@@ -653,9 +653,39 @@ body.--invert {
     position: relative;
     .service-info__content {
       position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-top: 0;
     }
     .card__list {
       height: 100vh;
+    }
+
+    @for $i from 1 to 5 {
+      .card__item:nth-child(#{$i}) {
+        z-index: #{4 - $i};
+      }
+    }
+
+    .line-rainbow {
+      position: relative;
+      background: $color__black;
+
+      &::after {
+        content: '';
+        z-index: -1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        display: block;
+        width: 160%;
+        height: 160%;
+        background-image: url('/assets/images/card_glow.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
     }
   }
   &__content {
