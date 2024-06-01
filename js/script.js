@@ -4,6 +4,9 @@ const getTopBtnPosition = () =>
 
 let prevScroll = window.scrollY;
 const topBtn = document.querySelector('.top-btn');
+const langBtn = document.querySelector('.header__menu-lang');
+const langList = document.querySelector('.header__menu-lang-list');
+
 const setTopBtnVisible = () => {
   let currentScroll = window.scrollY;
 
@@ -20,7 +23,7 @@ const onClickTopBtn = () => {
 };
 
 // PARAM gsap animation
-const animation = {
+const animationHandler = {
   setIntro: () => {
     /** 1번째 섹션 애니메이션 */
     const introDesc = gsap.utils.toArray('.intro__desc');
@@ -48,7 +51,10 @@ const animation = {
     });
     introDesc.forEach((el, idx) => {
       tl.to(el, { opacity: 1 });
-      tl.to(el, { opacity: 0 });
+
+      if (idx !== introDesc.length - 1) {
+        tl.to(el, { opacity: 0 });
+      }
     });
   },
   setMission: () => {
@@ -390,7 +396,7 @@ const animation = {
         'text'
       );
   },
-  setHorizonScroller: (scollerSectionSelector) => {
+  setHorizonScroller: (scollerSectionSelector, option) => {
     /** 수평 스크롤 */
     const scollerSection = document.querySelector(scollerSectionSelector);
     const scroller = scollerSection.querySelector(
@@ -404,6 +410,7 @@ const animation = {
         yoyo: true,
         scrub: true,
         end: () => `+=${scroller.offsetWidth}`,
+        ...option, // 커스텀 옵션이 필요하면 추가
       },
     });
 
@@ -456,6 +463,20 @@ const animation = {
       toggleClass: { targets: 'body', className: '--invert' },
     });
   },
+  /**  전통 금융, 미래 금융 화살표 애니메이션 */
+  setRightBtnOpacity: () => {
+    const arrow = document.querySelector('.arrow-right');
+    const section = document.querySelector("[data-section='9']");
+    ScrollTrigger.create({
+      trigger: section,
+      start: () => 'top top',
+      end: () => `bottom bottom`,
+      pinnedContainer: section,
+      markers: true,
+      toggleClass: { targets: arrow, className: 'arrow-right--show' },
+      onUpdate: (self) => console.log(self),
+    });
+  },
   /** top button 애니메이션 */
   setTopBtnPosition: () => {
     ScrollTrigger.create({
@@ -469,24 +490,52 @@ const animation = {
 
 // FUNCTION gsap 애니메이션 등록
 const registAnimation = () => {
-  animation.setIntro();
-  animation.setMission();
-  animation.setTextSplit("[data-scroller='1']");
-  animation.setTalent();
-  animation.setHorizonScroller("[data-section='5']");
-  animation.setColorChip();
-  animation.setService();
-  animation.setTextSplit("[data-scroller='2']");
-  animation.setHorizonScroller("[data-section='9']");
-  animation.setCreator();
-  animation.setHorizonScroller("[data-section='10']");
-  animation.setTicker();
-  animation.setHeaderPosition();
-  animation.setTopBtnPosition();
+  animationHandler.setIntro();
+  animationHandler.setMission();
+  animationHandler.setTextSplit("[data-scroller='1']");
+  animationHandler.setTalent();
+  animationHandler.setHorizonScroller("[data-section='5']");
+  animationHandler.setColorChip();
+  animationHandler.setService();
+  animationHandler.setTextSplit("[data-scroller='2']");
+  animationHandler.setHorizonScroller("[data-section='9']", {
+    onUpdate: (self) => {
+      const arrow = document.querySelector('.arrow-right');
+      const text = document.querySelectorAll('.arrow-title__text');
+      if (self.progress > 0 && self.progress < 1)
+        arrow.classList.add('arrow-right--show');
+      else arrow.classList.remove('arrow-right--show');
+
+      if (self.progress < 0.5) {
+        text[0].classList.add('arrow-title__text--show');
+        text[1].classList.remove('arrow-title__text--show');
+      } else {
+        text[1].classList.add('arrow-title__text--show');
+        text[0].classList.remove('arrow-title__text--show');
+      }
+    },
+  });
+  animationHandler.setCreator();
+  animationHandler.setHorizonScroller("[data-section='10']");
+  animationHandler.setTicker();
+  animationHandler.setHeaderPosition();
+  animationHandler.setTopBtnPosition();
+};
+
+// FUNCTION header 언어 메뉴 표시
+const langListHandler = {
+  toggle: () => {
+    langList.classList.toggle('header__menu-lang-list--show');
+  },
+  remove: () => {
+    langList.classList.remove('header__menu-lang-list--show');
+  },
 };
 
 (function () {
   registAnimation();
   window.addEventListener('scroll', debounce(setTopBtnVisible, 100));
+  window.addEventListener('scroll', debounce(langListHandler.remove, 100));
   topBtn.addEventListener('click', onClickTopBtn);
+  langBtn.addEventListener('click', langListHandler.toggle);
 })();
