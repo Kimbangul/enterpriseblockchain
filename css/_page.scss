@@ -37,8 +37,15 @@ body.--invert {
     bottom: 4rem;
     transform: translateX(-50%);
   }
+  &-right {
+    position: fixed;
+    padding-bottom: 2rem;
+    width: 100%;
+    bottom: 0;
+    background: linear-gradient(180deg, hsla(0, 0%, 98%, 0), #{$color__white});
+  }
   &-container {
-    @include util__flex(stretch, center);
+    @include util__flex(center, center);
     margin-top: 1.4rem;
     height: 2.7rem;
   }
@@ -78,9 +85,10 @@ body.--invert {
   }
   &-title {
     font-size: 1.8rem;
-    margin-top: 1.5rem;
+    margin-top: 1.8rem;
     text-align: center;
     font-weight: 700;
+    position: relative;
   }
 }
 .card {

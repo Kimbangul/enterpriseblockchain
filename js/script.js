@@ -15,6 +15,10 @@ const setTopBtnVisible = () => {
   prevScroll = currentScroll;
 };
 
+const onClickTopBtn = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 // PARAM gsap animation
 const animation = {
   setIntro: () => {
@@ -206,7 +210,7 @@ const animation = {
         opacity: 0,
       });
   },
-  setService2: () => {
+  setService: () => {
     // 카드 애니메이션 시작
     const section = document.querySelector("[data-section='7-0']");
     const section2 = document.querySelector("[data-section='7-2']");
@@ -471,7 +475,7 @@ const registAnimation = () => {
   animation.setTalent();
   animation.setHorizonScroller("[data-section='5']");
   animation.setColorChip();
-  animation.setService2();
+  animation.setService();
   animation.setTextSplit("[data-scroller='2']");
   animation.setHorizonScroller("[data-section='9']");
   animation.setCreator();
@@ -484,4 +488,5 @@ const registAnimation = () => {
 (function () {
   registAnimation();
   window.addEventListener('scroll', debounce(setTopBtnVisible, 100));
+  topBtn.addEventListener('click', onClickTopBtn);
 })();

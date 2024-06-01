@@ -124,9 +124,16 @@ body.--invert .data-id__icon-desc {
   bottom: 4rem;
   transform: translateX(-50%);
 }
+.arrow-right {
+  position: fixed;
+  padding-bottom: 2rem;
+  width: 100%;
+  bottom: 0;
+  background: linear-gradient(180deg, hsla(0, 0%, 98%, 0), #fff);
+}
 .arrow-container {
   display: flex;
-  justify-content: stretch;
+  justify-content: center;
   align-items: center;
   gap: 0;
   flex-direction: row;
@@ -193,9 +200,10 @@ body.--invert .data-id__icon-desc {
 }
 .arrow-title {
   font-size: 1.8rem;
-  margin-top: 1.5rem;
+  margin-top: 1.8rem;
   text-align: center;
   font-weight: 700;
+  position: relative;
 }
 
 .card__list {
