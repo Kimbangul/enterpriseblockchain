@@ -514,15 +514,22 @@ body.--invert {
   }
   &__desc {
     @include util__center-text;
-    font-size: 10rem;
+    max-width: 600px;
+    padding: 32px;
+    white-space: normal;
+    font-size: 2.4rem;
+    font-weight: 700;
+    z-index: 1;
+    line-height: $size__p-line-height;
+    color: $color__white;
+  }
+  &__title {
+    @include util__center-text;
     color: $color__white;
     font-weight: 700;
-    line-height: 1.2;
     z-index: 1;
-    &:nth-child(2) {
-      font-size: 2.4rem;
-      line-height: $size__p-line-height;
-    }
+    font-size: 10rem;
+    line-height: 1.2;
   }
   &__bg {
     top: 0;

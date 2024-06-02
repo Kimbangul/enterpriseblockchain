@@ -59,7 +59,7 @@ const animationHandler = {
   },
   setMission: () => {
     /** 2번째 섹션 애니메이션 */
-    const splitLine = new SplitType('.mission__desc:first-child', {
+    const splitLine = new SplitType('.mission__title', {
       types: 'lines',
     });
     const tl = gsap.timeline({
@@ -71,7 +71,7 @@ const animationHandler = {
       },
     });
 
-    tl.from('.mission__dimmer, .mission__desc:first-child', {
+    tl.from('.mission__dimmer, .mission__title', {
       opacity: 0,
     })
       .to(
@@ -95,7 +95,7 @@ const animationHandler = {
         },
         'line-animate'
       )
-      .to('.mission__desc:first-child', {
+      .to('.mission__title', {
         opacity: 0,
       })
       .progress(0.1);

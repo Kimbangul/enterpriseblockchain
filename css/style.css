@@ -691,6 +691,16 @@ body.--invert .data-id__icon-desc {
   padding: 0 10rem;
   height: 100%;
 }
+@media (max-width: 1024px) {
+  .sc__inner {
+    padding: 0 6rem;
+  }
+}
+@media (max-width: 749px) {
+  .sc__inner {
+    padding: 0 2.4rem;
+  }
+}
 .sc__title {
   font-size: 5.4rem;
   font-weight: 800;
@@ -731,6 +741,16 @@ body.--invert .data-id__icon-desc {
   flex-direction: row;
   padding: 0 10rem;
   height: 13.8rem;
+}
+@media (max-width: 1024px) {
+  .header__inner {
+    padding: 0 6rem;
+  }
+}
+@media (max-width: 749px) {
+  .header__inner {
+    padding: 0 2.4rem;
+  }
 }
 .header img, .header--show img {
   transition: filter 0.3s;
@@ -871,15 +891,26 @@ body.--invert .data-id__icon-desc {
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   white-space: nowrap;
-  font-size: 10rem;
+  max-width: 600px;
+  padding: 32px;
+  white-space: normal;
+  font-size: 2.4rem;
+  font-weight: 700;
+  z-index: 1;
+  line-height: 1.6;
+  color: #fff;
+}
+.mission__title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  white-space: nowrap;
   color: #fff;
   font-weight: 700;
-  line-height: 1.2;
   z-index: 1;
-}
-.mission__desc:nth-child(2) {
-  font-size: 2.4rem;
-  line-height: 1.6;
+  font-size: 10rem;
+  line-height: 1.2;
 }
 .mission__bg {
   top: 0;
@@ -1033,6 +1064,16 @@ body.--invert .data-id__icon-desc {
   flex-shrink: 0;
   width: auto;
 }
+@media (max-width: 1024px) {
+  .scroller-section__scroller {
+    padding: 0 6rem;
+  }
+}
+@media (max-width: 749px) {
+  .scroller-section__scroller {
+    padding: 0 2.4rem;
+  }
+}
 .scroller-section__desc {
   font-size: 1.8rem;
   font-weight: 800;
@@ -1119,6 +1160,16 @@ body.--invert .data-id__icon-desc {
   bottom: 4vh;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.6;
+}
+@media (max-width: 1024px) {
+  .data-id__caption {
+    padding: 0 6rem;
+  }
+}
+@media (max-width: 749px) {
+  .data-id__caption {
+    padding: 0 2.4rem;
+  }
 }
 
 .color-scroller {
@@ -1441,6 +1492,16 @@ body.--invert .data-id__icon-desc {
   gap: 0;
   flex-direction: row;
 }
+@media (max-width: 1024px) {
+  .footer__inner {
+    padding: 0 6rem;
+  }
+}
+@media (max-width: 749px) {
+  .footer__inner {
+    padding: 0 2.4rem;
+  }
+}
 .footer__info-copy {
   margin-top: 1rem;
   text-transform: uppercase;
@@ -1451,4 +1512,60 @@ body.--invert .data-id__icon-desc {
 }
 .footer__logo img {
   width: 100%;
+}
+
+.br--all {
+  display: inline-block !important;
+}
+.br--pc-none {
+  display: none;
+}
+@media (max-width: 749px) {
+  .br--pc-none {
+    display: inline-block !important;
+  }
+}
+.br--tb-md {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .intro__desc {
+    font-size: 2.6rem;
+  }
+  .mission__title {
+    font-size: 5rem;
+  }
+}
+@media (max-width: 1000px) {
+  .mission__desc br {
+    display: none;
+  }
+}
+@media (max-width: 749px) {
+  .intro__desc {
+    font-size: 3.6rem;
+    width: 100%;
+    max-width: 375px;
+    padding: 0 2.4rem;
+    margin: 0 auto;
+    white-space: initial;
+  }
+  .intro__desc br {
+    display: none;
+  }
+  .header__inner {
+    height: 8rem;
+  }
+  .logo {
+    width: 5rem;
+  }
+  .mission__title {
+    font-size: 6rem;
+  }
+  .mission__desc {
+    padding: 2.4rem;
+    width: 100%;
+    font-size: 2rem;
+  }
 }/*# sourceMappingURL=style.css.map */

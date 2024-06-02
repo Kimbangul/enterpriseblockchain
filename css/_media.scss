@@ -1,0 +1,80 @@
+.br {
+  &--all {
+    display: inline-block !important;
+  }
+  &--pc-none {
+    display: none;
+    @include tb-md {
+      display: inline-block !important;
+    }
+  }
+  &--tb-md {
+    display: none;
+  }
+}
+
+@include pc-lg {
+}
+
+@include pc-md {
+  .intro {
+    &__desc {
+      font-size: 2.6rem;
+    }
+  }
+
+  .mission {
+    &__title {
+      font-size: 5rem;
+    }
+    &__desc {
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .mission {
+    &__desc {
+      br {
+        display: none;
+      }
+    }
+  }
+}
+
+@include tb-md {
+  .intro {
+    &__desc {
+      font-size: 3.6rem;
+      width: 100%;
+      max-width: 375px;
+      padding: 0 2.4rem;
+      margin: 0 auto;
+      white-space: initial;
+
+      br {
+        display: none;
+      }
+    }
+  }
+
+  .header {
+    &__inner {
+      height: 8rem;
+    }
+  }
+  .logo {
+    width: 5rem;
+  }
+
+  .mission {
+    &__title {
+      font-size: 6rem;
+    }
+    &__desc {
+      padding: 2.4rem;
+      width: 100%;
+      font-size: 2rem;
+    }
+  }
+}

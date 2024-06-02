@@ -1,3 +1,20 @@
+@mixin pc-lg {
+  @media (max-width: $size__pc-lg) {
+    @content;
+  }
+}
+@mixin pc-md {
+  @media (max-width: $size__pc-md) {
+    @content;
+  }
+}
+
+@mixin tb-md {
+  @media (max-width: $size__tb-md) {
+    @content;
+  }
+}
+
 @mixin util__flex($jc: flex-start, $ai: stretch, $gap: 0, $dir: row) {
   display: flex;
   justify-content: $jc;
@@ -8,6 +25,14 @@
 
 @mixin util__inner {
   padding: $size__section-inner;
+
+  @include pc-md {
+    padding: 0 6rem;
+  }
+
+  @include tb-md {
+    padding: 0 2.4rem;
+  }
 }
 
 @mixin util__bg {
