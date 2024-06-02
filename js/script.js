@@ -130,16 +130,19 @@ const animationHandler = {
   },
   setTalent: () => {
     const scroller = document.querySelector('.talent__img-scroller');
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.talent__inner',
-        pin: true,
-        yoyo: true,
-        scrub: true,
-        start: () => 'top top',
-        end: () => `+=${scroller.offsetHeight * 4} center`,
+    const tl = gsap.timeline(
+      {
+        scrollTrigger: {
+          trigger: '.talent__inner',
+          pin: true,
+          yoyo: true,
+          scrub: true,
+          start: () => 'top top',
+          end: () => `+=${scroller.offsetHeight * 4} center`,
+        },
       },
-    });
+      '-=5'
+    );
 
     tl.fromTo(
       '.talent__img-scroller',
@@ -222,7 +225,6 @@ const animationHandler = {
     const section2 = document.querySelector("[data-section='7-2']");
     const scroller = section.querySelector('.scroller-section__scroller');
     const cards = section.querySelectorAll('.card__item');
-    const title = section.querySelector('.sc__title');
     const cardRainbow = document.querySelector('.card__item.line-rainbow');
 
     const tl = gsap.timeline({
@@ -233,19 +235,22 @@ const animationHandler = {
         scrub: true,
         end: () => `+=${scroller.offsetWidth * 5}`,
         ease: 'none',
+        invalidateOnRefresh: true,
       },
     });
 
+    console.log(section.querySelector('.sc__title').offsetWidth);
     // 카드 이동
     tl.to(scroller, {
-      x: -title.offsetWidth,
+      x: () => -section.querySelector('.sc__title').offsetWidth,
     });
 
     cards.forEach((el) => {
       tl.to(
         el,
         {
-          x: -el.offsetLeft,
+          x: () => -el.offsetLeft,
+          duration: 1,
         },
         'card-move'
       );
@@ -304,6 +309,7 @@ const animationHandler = {
       },
       {
         yPercent: 0,
+        duration: 5,
       },
       'scroll'
     );
@@ -317,26 +323,28 @@ const animationHandler = {
       {
         opacity: 1,
       },
-      'scroll+=0.7'
+      'scroll+=5.5'
     );
 
     // 카드 이동 시작
     cards2.forEach((el) => {
-      tl.to(
+      tl.addLabel('card').to(
         el,
         {
-          x: -el.offsetLeft,
+          x: () => -el.offsetLeft,
+          duration: 1,
         },
-        'scroll+=1'
+        'scroll+=6'
       );
     });
     // // 카드 이동 끝
 
     tl.to(section2.querySelector('.card__item-glow-bg'), { opacity: 1 }, 'glow')
-      .to(cardRainbow, { opacity: 0 }, 'glow')
-      .from(
+      .to(cardRainbow, { opacity: 0, duration: 1 }, 'glow')
+      .fromTo(
         section2.querySelector('.service-info__content'),
         { opacity: 0 },
+        { opacity: 1 },
         'glow'
       );
   },

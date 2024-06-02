@@ -276,25 +276,7 @@ body.--invert {
     position: absolute;
     transform: translateX(-50%) translateY(-50%);
   }
-  &__account {
-    @include util__flex(stretch, center, 0.8rem);
-    font-size: 1.6rem;
-    font-weight: 700;
-    &-profile {
-      width: 3.6rem;
-      height: 3.6rem;
-      border-radius: 100%;
-      background: #ff009d;
 
-      &.blue {
-        background: $color__blue;
-      }
-
-      &.green {
-        background: #26ff00;
-      }
-    }
-  }
   &__sub {
     &-title {
       @include util__flex(stretch, center, 0.8rem);
@@ -315,6 +297,27 @@ body.--invert {
       }
     }
   }
+  &__account {
+    @include util__flex(stretch, center, 0.8rem);
+    font-weight: 700;
+    &-id {
+      font-size: 1.6rem;
+    }
+    &-profile {
+      width: 3.6rem;
+      height: 3.6rem;
+      border-radius: 100%;
+      background: #ff009d;
+
+      &.blue {
+        background: $color__blue;
+      }
+
+      &.green {
+        background: #26ff00;
+      }
+    }
+  }
   &__rainbow-text {
     background-image: linear-gradient(
       90deg,
@@ -332,6 +335,7 @@ body.--invert {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+    white-space: nowrap;
   }
 }
 .rainbow-box {
@@ -339,6 +343,7 @@ body.--invert {
   position: relative;
   height: 16.6rem;
   flex-basis: 33.8rem;
+  flex-shrink: 1;
 
   &__text {
     @extend .card__rainbow-text;
@@ -674,6 +679,10 @@ body.--invert {
 }
 [data-section='7'] {
   flex-direction: column;
+
+  .card__title {
+    height: 4ch;
+  }
 }
 .data-id {
   padding: 2.4rem 0;
@@ -721,19 +730,51 @@ body.--invert {
     }
   }
   &__img {
-    width: 100vw;
+    transform: translateY(-7%);
+    &-container {
+      width: 100vw;
+    }
+    width: 50.6rem;
+    height: 53.6rem;
+    margin: 0 auto;
+    position: relative;
+
     img {
-      width: 50.6rem;
-      height: 53.6rem;
+      width: 100%;
       object-fit: contain;
-      margin: 0 auto;
-      padding-left: 10rem;
+    }
+
+    &-text {
+      position: absolute;
+      color: $color__white;
+      text-align: center;
+      font-weight: 700;
+
+      &:nth-child(1) {
+        top: 9%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      &:nth-child(2) {
+        left: 8%;
+        bottom: 26.3%;
+      }
+      &:nth-child(3) {
+        right: 8%;
+        bottom: 26.3%;
+      }
+    }
+    &-title {
+      font-size: 2.4rem;
+    }
+    &-desc {
+      font-size: 1.6rem;
     }
   }
   &__caption {
     @include util__inner;
     position: absolute;
-    bottom: 8vh;
+    bottom: 10vh;
     color: rgba(255, 255, 255, 0.6);
     line-height: $size__p-line-height;
   }
@@ -756,7 +797,7 @@ body.--invert {
   }
   &__chip {
     display: inline-block;
-    width: 33.33vw;
+    width: 33.33%;
     height: 100%;
     position: absolute;
     left: 0;
@@ -809,18 +850,19 @@ body.--invert {
     }
   }
   &__content {
-    //    width: calc(100% - 30.4rem);
     width: calc(100% - 40rem);
-    max-width: 82.6rem;
     margin-right: 0;
     margin-left: auto;
     margin-top: 9.6rem;
+    padding-left: 14vw;
 
     &:first-child {
       margin-top: 0;
     }
     &-desc {
       margin-top: 2.4rem;
+      max-width: 75rem;
+      margin-left: 0;
     }
   }
   &__list {
@@ -851,11 +893,12 @@ body.--invert {
     font-size: 6rem;
   }
   &__list {
-    @include util__flex(space-between, stretch, 2.7rem);
+    @include util__flex(stretch, stretch, 2.7rem);
     margin-top: 4.8rem;
   }
   &__item {
     flex: 1 0 0;
+    max-width: 30rem;
   }
   &__thumb {
     width: 100%;

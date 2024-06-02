@@ -1,7 +1,6 @@
 html {
   font-size: 62.5%;
   width: 100%;
-  overflow-x: hidden;
 }
 html,
 body {
@@ -30,14 +29,15 @@ button {
 }
 body {
   font-size: 1.4rem;
-  min-width: 280px;
-  overflow-x: hidden;
+  // min-width: 280px;
+  min-width: 1024px;
   word-break: keep-all;
   font-family: $font__archivo;
   line-height: $size__line-height;
   word-break: keep-all;
   position: relative;
   transition: background 0.3s;
+  overflow-x: hidden;
 }
 input,
 textarea {
