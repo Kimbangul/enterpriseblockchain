@@ -168,7 +168,7 @@ body.--invert .data-id__icon-desc {
 }
 .arrow-right {
   position: fixed;
-  padding-bottom: 4rem;
+  padding-bottom: 2.4rem;
   width: 100%;
   bottom: 0;
   background: linear-gradient(180deg, hsla(0, 0%, 98%, 0), #fff);
@@ -289,12 +289,24 @@ body.--invert .data-id__icon-desc {
   border-bottom: none;
 }
 .arrow-title {
-  font-size: 1.8rem;
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.6;
   margin-top: 1.8rem;
   text-align: center;
   font-weight: 700;
   position: relative;
-  padding-bottom: 2.4rem;
+  padding-bottom: 4.4rem;
+}
+@media (max-width: 1440px) {
+  .arrow-title {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 1024px) {
+  .arrow-title {
+    font-size: 1.6rem;
+  }
 }
 .arrow-title__text {
   position: absolute;
@@ -676,7 +688,7 @@ body.--invert .data-id__icon-desc {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 3.6rem;
+  font-size: 4rem;
   font-weight: 700;
   position: absolute;
   top: 50%;
@@ -687,11 +699,12 @@ body.--invert .data-id__icon-desc {
 .rainbow-box {
   position: relative;
   height: 16.6rem;
+  flex-basis: 33.8rem;
 }
 .rainbow-box__text {
   text-align: center;
   text-transform: uppercase;
-  font-size: 2.4rem;
+  font-size: 2.8rem;
 }
 
 .sc {
@@ -1320,9 +1333,9 @@ body.--invert .data-id__icon-desc {
 }
 .service-info__content {
   width: calc(100% - 40rem);
+  max-width: 82.6rem;
   margin-right: 0;
   margin-left: auto;
-  padding-left: 10vw;
   margin-top: 9.6rem;
 }
 .service-info__content:first-child {
@@ -1359,6 +1372,9 @@ body.--invert .data-id__icon-desc {
 }
 .service .sc__inner {
   height: auto;
+}
+.service__title {
+  font-size: 6rem;
 }
 .service__list {
   display: flex;
@@ -1623,6 +1639,14 @@ body.--invert .data-id__icon-desc {
     display: inline-block !important;
   }
 }
+.br--pc-md {
+  display: none;
+}
+@media (max-width: 1024px) {
+  .br--pc-md {
+    display: inline-block !important;
+  }
+}
 .br--tb-md {
   display: none;
 }
@@ -1674,7 +1698,7 @@ body.--invert .data-id__icon-desc {
   .creator__text-container {
     left: 15rem;
   }
-  .card__item, .rainbow-box {
+  .card__item:not(.rainbow-box), .rainbow-box:not(.rainbow-box) {
     width: 30.3rem;
     height: 40.8rem;
   }

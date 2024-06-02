@@ -8,6 +8,13 @@
       display: inline-block !important;
     }
   }
+
+  &--pc-md {
+    display: none;
+    @include pc-md {
+      display: inline-block !important;
+    }
+  }
   &--tb-md {
     display: none;
   }
@@ -74,8 +81,10 @@
 
   .card {
     &__item {
-      width: 30.3rem;
-      height: 40.8rem;
+      &:not(.rainbow-box) {
+        width: 30.3rem;
+        height: 40.8rem;
+      }
       &:not(.rainbow-box, .line-rainbow) {
         padding: 2.4rem;
       }
