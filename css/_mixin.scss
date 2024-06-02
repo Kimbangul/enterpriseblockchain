@@ -26,6 +26,10 @@
 @mixin util__inner {
   padding: $size__section-inner;
 
+  @include pc-lg {
+    padding: 0 7.2rem;
+  }
+
   @include pc-md {
     padding: 0 6rem;
   }
@@ -54,14 +58,31 @@
 }
 
 @mixin util__head-title {
-  font-size: 5.4rem;
+  font-size: 7.2rem;
   font-weight: 800;
+
+  @include pc-lg {
+    font-size: 5.4rem;
+  }
+  @include pc-md {
+    font-size: 4rem;
+  }
+  @include tb-md {
+    font-size: 4.4rem;
+  }
 }
 
 @mixin util__desc {
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   font-weight: 800;
   line-height: $size__p-line-height;
+
+  @include pc-lg {
+    font-size: 1.8rem;
+  }
+  @include pc-md {
+    font-size: 1.6rem;
+  }
 }
 
 @mixin util__arrow($color) {

@@ -13,9 +13,99 @@
   }
 }
 
-@include pc-lg {
+.mb-only {
+  display: none;
+  @include tb-md {
+    display: block;
+  }
 }
 
+.pc-only {
+  display: block;
+  @include tb-md {
+    display: none;
+  }
+}
+
+// ~ 1440px
+@include pc-lg {
+  .text-section {
+    &__desc {
+      font-size: 1.8rem;
+    }
+    &__spliter {
+      height: 57.5rem;
+      &-item {
+        height: 12rem;
+      }
+    }
+  }
+
+  .talent {
+    &__img {
+      &-container {
+        margin-top: 8.4rem;
+      }
+    }
+  }
+
+  .color-scroller {
+    &__text {
+      font-size: 3.6rem;
+    }
+  }
+
+  .top-btn {
+    right: 7.2rem;
+  }
+
+  .creator {
+    &__title {
+      font-size: 5.4rem;
+    }
+    &__desc {
+      font-size: 1.8rem;
+      line-height: 1.9;
+    }
+    &__text-container {
+      left: 15rem;
+    }
+  }
+
+  .card {
+    &__item {
+      width: 30.3rem;
+      height: 40.8rem;
+      &:not(.rainbow-box, .line-rainbow) {
+        padding: 2.4rem;
+      }
+    }
+    &__list {
+      gap: 2.4rem;
+    }
+    &__title {
+      font-size: 3.6rem;
+    }
+  }
+
+  .ticker {
+    &__text {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .mission {
+    &__desc {
+      br {
+        display: none;
+      }
+    }
+  }
+}
+
+// ~ 1024px
 @include pc-md {
   .intro {
     &__desc {
@@ -30,18 +120,63 @@
     &__desc {
     }
   }
-}
 
-@media (max-width: 1000px) {
-  .mission {
+  .text-section {
     &__desc {
-      br {
-        display: none;
+      font-size: 1.6rem;
+    }
+    &__spliter {
+      height: 45.6rem;
+      &-item {
+        height: 7.2rem;
       }
+    }
+  }
+
+  .scroller-section {
+    justify-content: stretch;
+    align-items: stretch;
+  }
+
+  .talent {
+    &__img {
+      &-container {
+        width: 50%;
+      }
+    }
+  }
+
+  .color-scroller {
+    &__text {
+      font-size: 2.4rem;
+    }
+  }
+
+  .top-btn {
+    right: 6rem;
+  }
+
+  .creator {
+    &__title {
+      font-size: 4rem;
+    }
+    &__desc {
+      font-size: 1.6rem;
+      margin-top: 2rem;
+    }
+    &__text-container {
+      left: 6rem;
+    }
+  }
+
+  .ticker {
+    &__text {
+      font-size: 1.6rem;
     }
   }
 }
 
+// ~ 749px
 @include tb-md {
   .intro {
     &__desc {
@@ -76,5 +211,73 @@
       width: 100%;
       font-size: 2rem;
     }
+  }
+
+  .text-section {
+    &__desc {
+      display: block;
+      margin-top: 2.4rem;
+
+      br {
+        display: none;
+      }
+    }
+
+    &__head {
+      br {
+        display: none;
+      }
+    }
+
+    &__spliter {
+      height: 60rem;
+      &-text {
+        font-size: 3.2rem;
+      }
+      &-item {
+        height: 4rem;
+        max-width: 34.6%;
+        width: 33vw;
+      }
+    }
+  }
+
+  .scroller-section {
+    &__title {
+      position: absolute;
+      left: 2.4rem;
+      top: 13vh;
+    }
+  }
+
+  .talent {
+    &__inner {
+      display: block;
+    }
+    &__img {
+      &-container {
+        width: 77%;
+        margin-top: 18rem;
+      }
+      &-desc {
+        font-size: 1.4rem;
+        margin-top: 0.6rem;
+      }
+    }
+    &__head {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .data-id {
+    &__icon {
+      border-radius: 4rem;
+    }
+  }
+
+  .top-btn {
+    right: 2.4rem;
   }
 }
