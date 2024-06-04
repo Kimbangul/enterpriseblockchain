@@ -178,7 +178,7 @@ body.--invert {
       }
       @for $i from 1 to 6 {
         &[data-blur='#{$i}'] {
-          @include util__card-blur-bg('/assets/images/card_bg_0#{$i}.png');
+          @include util__card-blur-bg('../assets/images/card_bg_0#{$i}.png');
         }
       }
     }
@@ -192,7 +192,7 @@ body.--invert {
       display: block;
       width: 160%;
       height: 160%;
-      background-image: url('/assets/images/card_glow.png');
+      background-image: url('../assets/images/card_glow.png');
       background-size: contain;
       background-repeat: no-repeat;
       opacity: 0;
@@ -288,7 +288,7 @@ body.--invert {
         position: absolute;
         width: 4rem;
         height: 4rem;
-        background: url('/assets/images/contract_icon.png');
+        background: url('../assets/images/contract_icon.png');
         background-size: contain;
         top: 50%;
         right: 0;
@@ -580,10 +580,10 @@ body.--invert {
     background-position: center;
     padding: 18rem 0;
     &[data-scroller='1'] {
-      background-image: url('/assets/images/text_scroller_01.jpg');
+      background-image: url('../assets/images/text_scroller_01.jpg');
     }
     &[data-scroller='2'] {
-      background-image: url('/assets/images/text_scroller_02.jpg');
+      background-image: url('../assets/images/text_scroller_02.jpg');
     }
     &-text {
       text-align: center;
@@ -928,7 +928,7 @@ body.--invert {
   }
   &__inner {
     @include util__flex(center, stretch, 0, column);
-    background: url('/assets/images/section_06_01.jpeg');
+    background: url('../assets/images/section_06_01.jpeg');
     background-size: cover;
     background-position: center;
   }

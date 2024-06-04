@@ -2,43 +2,43 @@
   font-family: "Archivo";
   font-style: normal;
   font-weight: 400;
-  src: url("/assets/fonts/Archivo-Light.woff2") format("woff2");
+  src: url("../assets/fonts/Archivo-Light.woff2") format("woff2");
 }
 @font-face {
   font-family: "Archivo";
   font-style: normal;
   font-weight: 500;
-  src: url("/assets/fonts/Archivo-Regular.woff2") format("woff2");
+  src: url("../assets/fonts/Archivo-Regular.woff2") format("woff2");
 }
 @font-face {
   font-family: "Archivo";
   font-style: normal;
   font-weight: 600;
-  src: url("/assets/fonts/Archivo-SemiBold.woff2") format("woff2");
+  src: url("../assets/fonts/Archivo-SemiBold.woff2") format("woff2");
 }
 @font-face {
   font-family: "Archivo";
   font-style: normal;
   font-weight: 700;
-  src: url("/assets/fonts/Archivo-Bold.woff2") format("woff2");
+  src: url("../assets/fonts/Archivo-Bold.woff2") format("woff2");
 }
 @font-face {
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 300;
-  src: url("/assets/fonts/NotoSansCJKkr-Light.woff2") format("woff2");
+  src: url("../assets/fonts/NotoSansCJKkr-Light.woff2") format("woff2");
 }
 @font-face {
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 400;
-  src: url("/assets/fonts/NotoSansCJKkr-Regular.woff2") format("woff2");
+  src: url("../assets/fonts/NotoSansCJKkr-Regular.woff2") format("woff2");
 }
 @font-face {
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 600;
-  src: url("/assets/fonts/NotoSansCJKkr-Bold.woff2") format("woff2");
+  src: url("../assets/fonts/NotoSansCJKkr-Bold.woff2") format("woff2");
 }
 @keyframes ani__arrow {
   0% {
@@ -387,7 +387,7 @@ body.--invert .data-id__icon-desc {
   background-position: center;
   top: 0;
   left: 0;
-  background-image: url(/assets/images/card_bg_01.png);
+  background-image: url(../assets/images/card_bg_01.png);
   z-index: 2;
   border-radius: 2rem;
   filter: blur(4rem);
@@ -416,7 +416,7 @@ body.--invert .data-id__icon-desc {
   background-position: center;
   top: 0;
   left: 0;
-  background-image: url(/assets/images/card_bg_02.png);
+  background-image: url(../assets/images/card_bg_02.png);
   z-index: 2;
   border-radius: 2rem;
   filter: blur(4rem);
@@ -445,7 +445,7 @@ body.--invert .data-id__icon-desc {
   background-position: center;
   top: 0;
   left: 0;
-  background-image: url(/assets/images/card_bg_03.png);
+  background-image: url(../assets/images/card_bg_03.png);
   z-index: 2;
   border-radius: 2rem;
   filter: blur(4rem);
@@ -474,7 +474,7 @@ body.--invert .data-id__icon-desc {
   background-position: center;
   top: 0;
   left: 0;
-  background-image: url(/assets/images/card_bg_04.png);
+  background-image: url(../assets/images/card_bg_04.png);
   z-index: 2;
   border-radius: 2rem;
   filter: blur(4rem);
@@ -503,7 +503,7 @@ body.--invert .data-id__icon-desc {
   background-position: center;
   top: 0;
   left: 0;
-  background-image: url(/assets/images/card_bg_05.png);
+  background-image: url(../assets/images/card_bg_05.png);
   z-index: 2;
   border-radius: 2rem;
   filter: blur(4rem);
@@ -531,7 +531,7 @@ body.--invert .data-id__icon-desc {
   display: block;
   width: 160%;
   height: 160%;
-  background-image: url("/assets/images/card_glow.png");
+  background-image: url("../assets/images/card_glow.png");
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0;
@@ -654,7 +654,7 @@ body.--invert .data-id__icon-desc {
   position: absolute;
   width: 4rem;
   height: 4rem;
-  background: url("/assets/images/contract_icon.png");
+  background: url("../assets/images/contract_icon.png");
   background-size: contain;
   top: 50%;
   right: 0;
@@ -1020,10 +1020,10 @@ body.--invert .data-id__icon-desc {
   padding: 18rem 0;
 }
 .text-section__spliter[data-scroller="1"] {
-  background-image: url("/assets/images/text_scroller_01.jpg");
+  background-image: url("../assets/images/text_scroller_01.jpg");
 }
 .text-section__spliter[data-scroller="2"] {
-  background-image: url("/assets/images/text_scroller_02.jpg");
+  background-image: url("../assets/images/text_scroller_02.jpg");
 }
 .text-section__spliter-text {
   text-align: center;
@@ -1455,7 +1455,7 @@ body.--invert .data-id__icon-desc {
   align-items: stretch;
   gap: 0;
   flex-direction: column;
-  background: url("/assets/images/section_06_01.jpeg");
+  background: url("../assets/images/section_06_01.jpeg");
   background-size: cover;
   background-position: center;
 }
