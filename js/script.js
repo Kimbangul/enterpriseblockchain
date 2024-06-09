@@ -239,7 +239,6 @@ const animationHandler = {
       },
     });
 
-    console.log(section.querySelector('.sc__title').offsetWidth);
     // 카드 이동
     tl.to(scroller, {
       x: () => -section.querySelector('.sc__title').offsetWidth,
@@ -353,16 +352,22 @@ const animationHandler = {
     const textSpliter = document.querySelector(textSpliterSelector);
 
     const text = textSpliter.querySelector('.text-section__spliter-text');
+
     const bgItem = textSpliter.querySelectorAll('.text-section__spliter-item');
-    const splitLine = new SplitType(text, {
-      types: 'lines',
-    });
+    // const splitLine = new SplitType(text, {
+    //   types: 'lines',
+    // });
+    const splitLine = text.querySelectorAll('.line');
+    const baseMove = () => splitLine[1].offsetWidth / 2;
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: textSpliter,
         scrub: true,
         start: () => 'top center',
-        end: () => `+=${textSpliter.offsetHeight * 2} bottom`,
+        end: () => `bottom center`,
+        invalidateOnRefresh: true,
+        repeatRefresh: true,
       },
     });
     const tl2 = gsap.timeline({
@@ -370,36 +375,47 @@ const animationHandler = {
         trigger: textSpliter,
         scrub: true,
         start: () => 'top center',
-        end: () => `+=${textSpliter.offsetHeight * 3} bottom`,
+        end: () => `bottom top`,
+        invalidateOnRefresh: true,
+        repeatRefresh: true,
       },
     });
 
     tl.to(
-      splitLine.lines[0],
+      splitLine[0],
       {
-        xPercent: -100,
+        x: () => -(baseMove() + splitLine[0].offsetWidth / 2),
       },
       'text'
     ).to(
-      splitLine.lines[2],
+      splitLine[2],
       {
-        xPercent: 100,
+        x: () => baseMove() + splitLine[2].offsetWidth / 2,
       },
       'text'
     );
+
+    gsap.set(bgItem[0], {
+      xPercent: () => 100,
+    });
+    gsap.set(bgItem[1], {
+      xPercent: () => -100,
+    });
 
     tl2
       .to(
         bgItem[0],
         {
-          width: '100%',
+          xPercent: () => 0,
+          duration: 15,
         },
         'text'
       )
       .to(
         bgItem[1],
         {
-          width: '100%',
+          xPercent: () => 0,
+          duration: 15,
         },
         'text'
       );
@@ -480,9 +496,7 @@ const animationHandler = {
       start: () => 'top top',
       end: () => `bottom bottom`,
       pinnedContainer: section,
-      markers: true,
       toggleClass: { targets: arrow, className: 'arrow-right--show' },
-      onUpdate: (self) => console.log(self),
     });
   },
   /** top button 애니메이션 */

@@ -1030,14 +1030,22 @@ body.--invert .data-id__icon-desc {
   background-image: url("../assets/images/text_scroller_02.jpg");
 }
 .text-section__spliter-text {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  gap: 0;
+  flex-direction: column;
   text-align: center;
   color: #fff;
+}
+.text-section__spliter-text .line {
+  display: inline-block !important;
 }
 .text-section__spliter-item {
   position: absolute;
   top: 0;
   right: 0;
-  width: 0;
+  width: 100%;
   max-width: 22%;
   height: 14rem;
   background: #fff;

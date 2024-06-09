@@ -586,14 +586,19 @@ body.--invert {
       background-image: url('../assets/images/text_scroller_02.jpg');
     }
     &-text {
+      @include util__flex(stretch, center, 0, column);
       text-align: center;
       color: $color__white;
+
+      .line {
+        display: inline-block !important;
+      }
     }
     &-item {
       position: absolute;
       top: 0;
       right: 0;
-      width: 0;
+      width: 100%;
       max-width: 22%;
       height: 14rem;
       background: $color__white;
